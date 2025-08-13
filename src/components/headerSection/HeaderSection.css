@@ -39,3 +39,23 @@
 .search-icon {
 	color: rgb(160, 162, 163);
 }
+
+.lngs {
+	border: 1px solid var(--grey-color);
+	padding: 4px 5px;
+	border-radius: 7px;
+}
+
+.lngs h2 {
+	color: var(--grey-color);
+	cursor: pointer;
+	font-size: 18px;
+}
+
+.full-ekran button {
+	border: 1px solid var(--grey-color);
+	padding: 5px 6px 3px 6px;
+	border-radius: 7px;
+	cursor: pointer;
+	color: var(--grey-color);
+}
