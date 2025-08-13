@@ -31,7 +31,7 @@ const HeaderSection = () => {
 		}
 	}
 	return (
-		<div className='header-section display-flex'>
+		<div className='header-section display-flex' data-aos="fade-down">
 			<FaRegPlusSquare className='header-icon' />
 			<div className='search display-flex'>
 				<input type='search' placeholder='Qidirish' />

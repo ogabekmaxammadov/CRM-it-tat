@@ -1,0 +1,78 @@
+.home-page {
+    width: 78.05vw;
+    height: 83.8vh;
+    /* border: 1px solid var(--primary-color); */
+    padding: 10px;
+    margin: 20px 0px;
+    left: 20%;
+    top: 9.5vh;
+    border-radius: 14px;
+    position: fixed;
+/* box-shadow: 0px 3px 21px 3px rgba(34, 60, 80, 0.2); */
+    border: 1px solid var(--primary-color);
+    background-color: var(--white-color);
+}
+
+.element-card-bar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.element-card-bar {
+  display: flex;
+  justify-content: center; /* markazga joylash */
+}
+
+.swiper {
+  max-width: 1200px; /* kenglik */
+}
+
+.swiper-button-prev {
+  left: 20px; /* chap strelka masofasi */
+}
+
+.swiper-button-next {
+  right: 20px; /* o‘ng strelka masofasi */
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #007aff; /* strelka rangi */
+}
+
+
+
+.dashboard-element-card{
+    width: 170px;
+    height: 170px;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 14px;
+    background-color: var(--white-color);
+    box-shadow: 0px 3px 21px 3px rgba(34, 60, 80, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--primary-color);
+    
+}
+.dashboard-element-card:first-child{
+    margin-left: 50px;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: black;
+}
+
+.swiper-button-prev {
+  left: 15px; /* chapdan 15px */
+}
+
+.swiper-button-next {
+  right: 15px; /* o‘ngdan 15px */
+}

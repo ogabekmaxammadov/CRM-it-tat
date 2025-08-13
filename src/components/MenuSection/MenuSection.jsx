@@ -9,7 +9,7 @@ import './MenuSection.css'
 
 const MenuSection = () => {
 	return (
-		<div className='menu-section'>
+		<div className='menu-section' data-aos="fade-right">
 			<div className='logo display-flex'>
 				<img src={logo} alt='' />
 				{/* <h2>IT TAT Academy</h2> */}

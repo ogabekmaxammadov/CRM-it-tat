@@ -75,7 +75,7 @@ a h2 {
 }
 
 .isActive {
-	background-color: rgb(224, 231, 238);
+	background-color: var(--white-color);
 	color: #3d51e3;
 	border-top-left-radius: 12px;
 	border-bottom-left-radius: 12px;

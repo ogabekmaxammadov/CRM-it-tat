@@ -1,6 +1,6 @@
 .header-section {
-	height: 11vh;
-	width: 79.5%;
+	height: 10vh;
+	width: 79.5vw;
 	background-color: #3d51e3;
 	left: 20%;
 	top: 1vh;
@@ -41,21 +41,27 @@
 }
 
 .lngs {
-	border: 1px solid var(--grey-color);
+	border: 1px solid var(--white-color);
 	padding: 4px 5px;
 	border-radius: 7px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .lngs h2 {
-	color: var(--grey-color);
+	color: var(--white-color);
 	cursor: pointer;
 	font-size: 18px;
 }
 
 .full-ekran button {
-	border: 1px solid var(--grey-color);
+	border: 1px solid var(--white-color);
 	padding: 5px 6px 3px 6px;
 	border-radius: 7px;
 	cursor: pointer;
-	color: var(--grey-color);
+	color: var(--white-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
