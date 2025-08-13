@@ -1,0 +1,41 @@
+.header-section {
+	height: 11vh;
+	width: 79.5%;
+	background-color: #3d51e3;
+	left: 20%;
+	top: 1vh;
+	border-radius: 14px;
+	position: fixed;
+	z-index: 999;
+	padding: 0 40px;
+	box-sizing: border-box;
+	justify-content: space-between;
+}
+
+.search {
+	width: 250px;
+	background-color: aliceblue;
+	height: 35px;
+	border-radius: 10px;
+	padding-right: 10px;
+}
+
+.search input {
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+	outline: none;
+	border: none;
+	padding-left: 10px;
+	background-color: transparent;
+}
+
+.header-icon {
+	font-size: 24px;
+	color: #fff;
+	cursor: pointer;
+}
+
+.search-icon {
+	color: rgb(160, 162, 163);
+}
