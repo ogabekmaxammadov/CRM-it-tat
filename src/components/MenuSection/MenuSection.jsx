@@ -2,6 +2,7 @@ import { FaLayerGroup } from 'react-icons/fa'
 import { LiaChalkboardTeacherSolid } from 'react-icons/lia'
 import { MdOutlineDashboard } from 'react-icons/md'
 import { PiStudentBold } from 'react-icons/pi'
+import { NavLink } from 'react-router-dom'
 import './MenuSection.css'
 
 const MenuSection = () => {
@@ -13,22 +14,22 @@ const MenuSection = () => {
 			</div>
 			<nav>
 				<ul>
-					<li>
+					<NavLink to='/'>
 						<MdOutlineDashboard className='nav-icon' />
-						<a href=''>Dashboard</a>
-					</li>
-					<li>
+						<h2>Dashboard</h2>
+					</NavLink>
+					<NavLink to='/teachers'>
 						<LiaChalkboardTeacherSolid className='nav-icon' />
-						<a href=''>O'qituvchilar</a>
-					</li>
-					<li>
+						<h2>O'qituvchilar</h2>
+					</NavLink>
+					<NavLink to='/groups'>
 						<FaLayerGroup className='nav-icon' />
-						<a href=''>Guruxlar</a>
-					</li>
-					<li>
+						<h2>Guruxlar</h2>
+					</NavLink>
+					<NavLink to='/students'>
 						<PiStudentBold className='nav-icon' />
-						<a href=''>Talabalar</a>
-					</li>
+						<h2>Talabalar</h2>
+					</NavLink>
 				</ul>
 			</nav>
 		</div>

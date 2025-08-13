@@ -3,7 +3,7 @@
 	background-color: #3d51e3;
 	position: fixed;
 	left: 0;
-	padding: 20px 0px 20px 20px;
+	padding: 20px 0px 20px 35px;
 }
 
 .logo {
@@ -22,19 +22,31 @@
 	font-weight: 700;
 }
 
+.logo {
+	margin-bottom: 50px;
+}
+
 ul {
 	display: flex;
 	flex-direction: column;
-	gap: 30px;
-	margin-top: 40px;
+	gap: 45px;
 }
 
-li {
+a {
 	display: flex;
 	align-items: center;
+	gap: 20px;
 }
 
-li .nav-icon {
-	font-size: 30px;
-	color: #fff;
+a .nav-icon {
+	height: 37px;
+	width: 37px;
+	color: #c1bbeb;
+}
+
+a h2 {
+	font-size: 18px;
+	color: #c1bbeb;
+	font-family: Poppins;
+	font-weight: 400;
 }

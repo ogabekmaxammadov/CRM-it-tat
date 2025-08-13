@@ -1,17 +1,16 @@
-import { BrowserRouter, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import MenuSection from './components/MenuSection/MenuSection'
+import HomePage from './pages/HomePage/HomePage'
 
 function App() {
 	return (
-		<>
-			<div className='container'>
-				<MenuSection />
-				<BrowserRouter>
-					<Routes></Routes>
-				</BrowserRouter>
-			</div>
-		</>
+		<div className='container'>
+			<MenuSection />
+			<Routes>
+				<Route path='/' element={<HomePage />} />
+			</Routes>
+		</div>
 	)
 }
 
