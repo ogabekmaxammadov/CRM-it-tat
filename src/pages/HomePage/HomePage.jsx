@@ -1,65 +1,80 @@
-import './home.css';
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { useEffect } from "react";
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+import { useEffect } from 'react'
+import './home.css'
 
 // ? swiper
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import { Navigation } from "swiper/modules";
+import { FaRegUser, FaUserTimes } from 'react-icons/fa'
+import { IoWarningOutline } from 'react-icons/io5'
+import { LiaLayerGroupSolid, LiaUserAltSlashSolid } from 'react-icons/lia'
+import { MdConnectedTv } from 'react-icons/md'
+import { PiStudentBold } from 'react-icons/pi'
+import { SiContactlesspayment } from 'react-icons/si'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import { Navigation } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
 const HomePage = () => {
 	useEffect(() => {
-		AOS.init({ duration: 1000, once: true });
-	}, []);
+		AOS.init({ duration: 1000, once: true })
+	}, [])
 
 	const cards = [
-		{ title: "Active lids", icon: 'salom', number: 113, },
-		{ title: "Active students", icon: 'salom', number: 113, },
-		{ title: "Groups", icon: 'salom', number: 113, },
-		{ title: "Debtors", icon: 'salom', number: 113, },
-		{ title: "In a trial lesson", icon: 'salom', number: 113, },
-		{ title: "Paid during the month", icon: 'salom', number: 113, },
-		{ title: "Left active group", icon: 'salom', number: 113, },
-		{ title: "Left after trial period", icon: 'salom', number: 113, }
-	];
+		{ title: 'Active lids', icon: <FaRegUser />, number: 113 },
+		{ title: 'Faol talabalar', icon: <PiStudentBold />, number: 113 },
+		{ title: 'Guruxlar', icon: <LiaLayerGroupSolid />, number: 113 },
+		{ title: 'Qarzdorlar', icon: <IoWarningOutline />, number: 113 },
+		{ title: 'Sinov darsida', icon: <MdConnectedTv />, number: 113 },
+		{
+			title: 'Joriy oyda tolaganlar',
+			icon: <SiContactlesspayment />,
+			number: 113,
+		},
+		{ title: 'Faol guruxni tark etganlar', icon: <FaUserTimes />, number: 113 },
+		{
+			title: 'Sinov muddatiddan keyin ketdi',
+			icon: <LiaUserAltSlashSolid />,
+			number: 113,
+		},
+	]
 
 	return (
-		<div className='home-page' data-aos="fade-left">
-			<div className="element-card-bar">
-				
+		<div className='home-page' data-aos='fade-left'>
+			<div className='element-card-bar'>
 				{/* ? swiper */}
 				<Swiper
-        slidesPerView={4} // nechta slayd bir sahifada ko'rsatiladi
-        spaceBetween={10}
-        navigation={true} // strelkalarni yoqadi
-        modules={[Navigation]}
-        // style={{ margin: "20px" }}
-      >
-
-	
-
-
-			  {cards.map((card, index) => (
-          <SwiperSlide key={index}>
-            <div className="dashboard-element-card">
-              <div className="card-icon">
-                <h2>{card.icon}</h2>
-              </div>
-              <div>
-                <h2>{card.title}</h2>
-              </div>
-              <br />
-              <div>
-                <h1>{card.number}</h1>
-              </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+					slidesPerView={6.5} // nechta slayd bir sahifada ko'rsatiladi
+					spaceBetween={10}
+					navigation={true} // strelkalarni yoqadi
+					modules={[Navigation]}
+					// style={{ margin: "20px" }}
+				>
+					{cards.map((card, index) => (
+						<SwiperSlide key={index}>
+							<div className='dashboard-element-card'>
+								<div className='card-icon'>
+									<i>{card.icon}</i>
+								</div>
+								<div>
+									<p>{card.title}</p>
+								</div>
+								<br />
+								<div>
+									<h1>{card.number}</h1>
+								</div>
+							</div>
+						</SwiperSlide>
+					))}
+				</Swiper>
+			</div>
+			<div className='table'>
+				<div className='table-prev '>
+					<button className='table-btn'>Barchasini ko'rish</button>
+					<h3>Jadval</h3>
+				</div>
 			</div>
 		</div>
-	);
+	)
 }
 
-export default HomePage;
+export default HomePage

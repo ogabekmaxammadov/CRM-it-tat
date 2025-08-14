@@ -1,5 +1,5 @@
 .header-section {
-	height: 10vh;
+	height: 12vh;
 	width: 79.5vw;
 	background-color: #3d51e3;
 	left: 20%;
@@ -42,7 +42,7 @@
 
 .lngs {
 	border: 1px solid var(--white-color);
-	padding: 4px 5px;
+	padding: 3px 5px;
 	border-radius: 7px;
 	display: flex;
 	justify-content: center;
@@ -64,4 +64,33 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.right-elements {
+	gap: 15px;
+}
+
+.clock {
+	font-size: 27px;
+}
+
+.right-elements h4 {
+	color: var(--grey-color);
+	cursor: pointer;
+	font-family: Poppins;
+	font-weight: 400;
+}
+
+.account {
+	padding: 4px 6px 4px 6px;
+	background-color: #646363;
+	display: flex;
+	justify-content: center;
+	border-radius: 7px;
+	cursor: pointer;
+}
+
+.account .account-icon {
+	color: var(--grey-color);
+	font-size: 24px;
 }

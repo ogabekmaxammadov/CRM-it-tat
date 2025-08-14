@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { AiOutlineFullscreen, AiOutlineFullscreenExit } from 'react-icons/ai'
-import { FaRegPlusSquare } from 'react-icons/fa'
+import { FaBell, FaRegPlusSquare } from 'react-icons/fa'
 import { IoSearch } from 'react-icons/io5'
+import { LuClock5 } from 'react-icons/lu'
+import { SlPicture } from 'react-icons/sl'
 import './HeaderSection.css'
 
 const HeaderSection = () => {
@@ -31,28 +33,35 @@ const HeaderSection = () => {
 		}
 	}
 	return (
-		<div className='header-section display-flex' data-aos="fade-down">
+		<div className='header-section display-flex' data-aos='fade-down'>
 			<FaRegPlusSquare className='header-icon' />
 			<div className='search display-flex'>
 				<input type='search' placeholder='Qidirish' />
 				<IoSearch className='search-icon header-icon' />
 			</div>
 
-			<div className='lngs'>
-				<h2>uz</h2>
-			</div>
-
-			<div className='full-ekran'>
-				<button
-					onClick={toggleFullScreen}
-					style={{
-						background: isFull ? 'transparent' : 'transparent',
-						cursor: 'pointer',
-						fontSize: '18px',
-					}}
-				>
-					{isFull ? <AiOutlineFullscreenExit /> : <AiOutlineFullscreen />}
-				</button>
+			<div className='right-elements display-flex'>
+				<div className='lngs'>
+					<h2>uz</h2>
+				</div>
+				<div className='full-ekran'>
+					<button
+						onClick={toggleFullScreen}
+						style={{
+							background: isFull ? 'transparent' : 'transparent',
+							cursor: 'pointer',
+							fontSize: '18px',
+						}}
+					>
+						{isFull ? <AiOutlineFullscreenExit /> : <AiOutlineFullscreen />}
+					</button>
+				</div>
+				<LuClock5 className='header-icon clock' />
+				<FaBell className='header-icon clock' />
+				<h4>Asliddin Hakimov</h4>
+				<div className='account'>
+					<SlPicture className='account-icon' />
+				</div>
 			</div>
 		</div>
 	)
