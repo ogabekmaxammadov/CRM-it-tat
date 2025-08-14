@@ -1,20 +1,41 @@
 .header-section {
-	height: 12vh;
-	width: 79.5vw;
-	background-color: #3d51e3;
-	left: 20%;
-	top: 1vh;
+	height: 11vh;
+	background-color: var(--primary-color);
 	border-radius: 14px;
-	position: fixed;
+	position: absolute;
+	top: 1vh;
+	right: 1vh;
+	left: 36.05vh;
 	z-index: 999;
 	padding: 35px 40px;
 	box-sizing: border-box;
 	justify-content: space-between;
+	/* z-index: -1; */
+	transition: all 0.3s ease;
+	
 }
+
+.header-section {
+  transition: margin-left 0.3s ease;
+  margin-left: 5px;
+}
+
+.header-section.collapsed {
+  /* margin-left: -50px; */
+  margin-left: -155px;
+}
+
+
+.header-section.aos-animate {
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+
 
 .search {
 	width: 250px;
-	background-color: aliceblue;
+	background-color: var(--white-color);
 	height: 35px;
 	border-radius: 10px;
 	padding-right: 10px;
@@ -32,7 +53,7 @@
 
 .header-icon {
 	font-size: 24px;
-	color: #fff;
+	color: var(--white-color);
 	cursor: pointer;
 }
 
@@ -75,7 +96,7 @@
 }
 
 .right-elements h4 {
-	color: var(--grey-color);
+	color: var(--white-color);
 	cursor: pointer;
 	font-family: Poppins;
 	font-weight: 400;
@@ -83,7 +104,7 @@
 
 .account {
 	padding: 4px 6px 4px 6px;
-	background-color: #646363;
+	/* background-color: var(--black-color); */
 	display: flex;
 	justify-content: center;
 	border-radius: 7px;
@@ -91,6 +112,7 @@
 }
 
 .account .account-icon {
-	color: var(--grey-color);
+	color: var(--white-color);
 	font-size: 24px;
+	border: 50%;
 }

@@ -16,7 +16,7 @@ const LoginPage = ({ onLogin }) => {
 	const handleLogin = e => {
 		e.preventDefault()
 
-		if (phone === '1234 ' && password === '1234 ') {
+		if (phone === '1234' && password === '1234') {
 			onLogin()
 			navigate('/', { replace: true })
 		} else {

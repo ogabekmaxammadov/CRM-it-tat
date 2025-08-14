@@ -1,14 +1,15 @@
 .menu-section {
-	width: 19%;
-	height: 98vh;
-	background-color: #3d51e3;
-	position: fixed;
-	left: 0.5%;
-	padding: 20px 0px 20px 20px;
-	box-sizing: border-box;
-	overflow-y: scroll;
+	width: 240px;
+	height: 92vh;
+	background-color: var(--primary-color);
+	position: relative;
 	top: 1vh;
-	border-radius: 17px;
+	bottom: 1vh;
+	left: 1vh;
+	padding: 20px 0px 20px 10px;
+	/* box-sizing: border-box; */
+	overflow-y: scroll;
+	border-radius: 14px;
 }
 
 .menu-section::-webkit-scrollbar {
@@ -22,6 +23,7 @@
 	position: absolute;
 	left: 50%;
 	transform: translateX(-25%);
+	transition: all 0.3s ease;
 	/* justify-content: center; */
 }
 
@@ -31,7 +33,7 @@
 }
 
 .logo img:hover {
-	animation: logoanim 0.8s ease-in-out;
+	animation: logoanim 0.4s ease-in-out;
 }
 
 @keyframes logoanim {
@@ -39,15 +41,15 @@
 		transform: scale(1);
 	}
 
-	25% {
-		transform: scale(1.2);
-	}
 	50% {
+		transform: scale(1.1);
+	}
+	/* 50% {
 		transform: scale(1);
 	}
 	75% {
 		transform: scale(1.1);
-	}
+	} */
 	100% {
 		transform: scale(1);
 	}
@@ -55,7 +57,7 @@
 
 .logo h2 {
 	font-size: 28px;
-	color: #fff;
+	color: var(--white-color);
 	font-family: Poppins;
 	font-weight: 700;
 }
@@ -72,7 +74,7 @@ ul {
 	display: flex;
 	flex-direction: column;
 	gap: 15px;
-	background-color: #3d51e3;
+	background-color: var(--primary-color);
 }
 
 a {
@@ -83,32 +85,67 @@ a {
 	transition: all.3s ease-in-out;
 	border-top-left-radius: 12px;
 	border-bottom-left-radius: 12px;
-	background-color: #3d51e3;
+	background-color: var(--primary-color);
 }
 
 a .nav-icon {
-	color: #c1bbeb;
+	color: var(--white-color);
 	font-size: 35px;
 }
 
 a h2 {
 	font-size: 18px;
-	color: #fff;
+	color: var(--white-color);
 	font-family: Poppins;
 	font-weight: 400;
 }
 
 .isActive {
 	background-color: var(--white-color);
-	color: #3d51e3;
+	color: var(--primary-color);
 	border-top-left-radius: 12px;
 	border-bottom-left-radius: 12px;
 }
 
 .isActive .nav-icon {
-	color: #3d51e3;
+	color: var(--primary-color);
 }
 
 .isActive h2 {
-	color: #3d51e3;
+	color: var(--primary-color);
 }
+
+.close-side-bar{
+	position: absolute;
+	bottom: 20px;
+	left: 23px;
+	font-size: 30px;
+	color: var(--white-color);
+	cursor: pointer;
+}
+
+/* ? sidebar close */
+.menu-section {
+	background-color: #4a74a8;
+	color: white;
+	width: 240px;
+	transition: width 0.3s ease;
+}
+
+.menu-section.collapsed {
+	width: 80px;
+	transition: all 0.3s ease;
+}
+
+.collapsed .logo {
+	width: 130px;
+	transition: all 0.3s ease;
+
+}
+
+
+.menu-section.collapsed h2 {
+	display: none;
+}
+
+

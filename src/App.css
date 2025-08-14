@@ -11,19 +11,19 @@ body {
 }
 
 :root {
-	--primary-color: #3d51e3;
+	--primary-color: #5072A7;
 	--white-color: #fff;
 	--black-color: #000;
 	--background-color: rgb(224, 231, 238);
 	--grey-color: rgb(160, 162, 163);
 }
 
-.container {
+/* .container {
 	max-width: 100%;
 	margin: 0 auto;
 	display: flex;
 	padding: 0 40px;
-}
+} */
 
 .display-flex {
 	display: flex;

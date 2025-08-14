@@ -8,20 +8,8 @@ import { LiaLayerGroupSolid, LiaUserAltSlashSolid } from 'react-icons/lia'
 import { MdConnectedTv } from 'react-icons/md'
 import { PiStudentBold } from 'react-icons/pi'
 import { SiContactlesspayment } from 'react-icons/si'
-import 'swiper/css'
-import 'swiper/css/navigation'
-import { Navigation } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
-const HomePage = () => {
-	// useEffect(() => {
-	// 	AOS.init({ duration: 1000, once: true })
-	// }, [])
 
-	// const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true'
-
-	// if (!isAuthenticated) {
-	// 	return <Navigate to='/login' replace />
-	// }
+const HomePage = ({ collapsed }) => {
 
 	const cards = [
 		{ title: 'Active lids', icon: <FaRegUser />, number: 113 },
@@ -43,19 +31,12 @@ const HomePage = () => {
 	]
 
 	return (
-		<div className='home-page' data-aos='fade-left'>
+		<div className={`home-page ${collapsed ? 'expanded' : ''}`} data-aos="fade-left">
 			<div className='element-card-bar'>
-				{/* ? swiper */}
-				<Swiper
-					slidesPerView={6.5} // nechta slayd bir sahifada ko'rsatiladi
-					spaceBetween={10}
-					navigation={true} // strelkalarni yoqadi
-					modules={[Navigation]}
-					// style={{ margin: "20px" }}
-				>
+				
+				
 					{cards.map((card, index) => (
-						<SwiperSlide key={index}>
-							<div className='dashboard-element-card'>
+						<div className='dashboard-element-card'>
 								<div className='card-icon'>
 									<i>{card.icon}</i>
 								</div>
@@ -67,9 +48,9 @@ const HomePage = () => {
 									<h1>{card.number}</h1>
 								</div>
 							</div>
-						</SwiperSlide>
+								
 					))}
-				</Swiper>
+				
 			</div>
 			<div className='table'>
 				<div className='table-prev '>
