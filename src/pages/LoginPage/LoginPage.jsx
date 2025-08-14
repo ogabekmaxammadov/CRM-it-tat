@@ -16,10 +16,7 @@ const LoginPage = ({ onLogin }) => {
 	const handleLogin = e => {
 		e.preventDefault()
 
-		if (
-			phone === '1234 ni terib kiring' &&
-			password === '1234 ni terib kiring'
-		) {
+		if (phone === '1234 ' && password === '1234 ') {
 			onLogin()
 			navigate('/', { replace: true })
 		} else {
@@ -32,13 +29,13 @@ const LoginPage = ({ onLogin }) => {
 			<form className='form' onSubmit={handleLogin}>
 				<input
 					type='tel'
-					placeholder='Telefon raqam'
+					placeholder='1234  ni terib kiring'
 					value={phone}
 					onChange={e => setPhone(e.target.value)}
 				/>
 				<input
 					type='password'
-					placeholder='Parol'
+					placeholder='parol: 1234'
 					value={password}
 					onChange={e => setPassword(e.target.value)}
 				/>
