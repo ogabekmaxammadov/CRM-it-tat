@@ -1,6 +1,4 @@
-import AOS from 'aos'
 import 'aos/dist/aos.css'
-import { useEffect } from 'react'
 import './home.css'
 
 // ? swiper
@@ -15,9 +13,15 @@ import 'swiper/css/navigation'
 import { Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 const HomePage = () => {
-	useEffect(() => {
-		AOS.init({ duration: 1000, once: true })
-	}, [])
+	// useEffect(() => {
+	// 	AOS.init({ duration: 1000, once: true })
+	// }, [])
+
+	// const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true'
+
+	// if (!isAuthenticated) {
+	// 	return <Navigate to='/login' replace />
+	// }
 
 	const cards = [
 		{ title: 'Active lids', icon: <FaRegUser />, number: 113 },
