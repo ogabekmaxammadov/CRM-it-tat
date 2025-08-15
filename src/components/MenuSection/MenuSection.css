@@ -1,10 +1,10 @@
 .menu-section {
 	width: 240px;
-	height: 92vh;
 	background-color: var(--primary-color);
-	position: relative;
+	position: fixed;
 	top: 1vh;
-	bottom: 1vh;
+	bottom: 1vh; /* pastdan 10px bo‘sh joy */
+	/* height: calc(95vh - 4vh); */
 	left: 1vh;
 	padding: 20px 0px 20px 10px;
 	/* box-sizing: border-box; */
@@ -115,7 +115,7 @@ a h2 {
 	color: var(--primary-color);
 }
 
-.close-side-bar{
+.close-side-bar {
 	position: absolute;
 	bottom: 20px;
 	left: 23px;
@@ -128,24 +128,20 @@ a h2 {
 .menu-section {
 	background-color: #4a74a8;
 	color: white;
-	width: 240px;
+	/* width: 240px; */
 	transition: width 0.3s ease;
 }
 
 .menu-section.collapsed {
 	width: 80px;
-	transition: all 0.3s ease;
+	transition: all 0.3s ease-in-out;
 }
 
 .collapsed .logo {
 	width: 130px;
 	transition: all 0.3s ease;
-
 }
-
 
 .menu-section.collapsed h2 {
 	display: none;
 }
-
-

@@ -1,65 +1,39 @@
 .home-page {
-	width: calc(97vw - 250px); /* sidebar ochiq */
-	height: 82.5vh;
-	padding: 10px;
-	margin-top: 20px;
-	position: fixed;
-	right: 1vh;
+	position: relative;
+	height: 85vh;
+	padding: 20px;
+	margin-top: 10px;
+	left: 260px;
+	width: calc(99vw - 260px);
 	background-color: var(--white-color);
 	border: 1px solid var(--primary-color);
-	/* transition: all 0.3s ease; */
 	border-radius: 14px;
-	transition: all 0.3s ease !important;
+	transition: all 0.3s ease-out !important;
+	overflow-y: scroll;
+	scrollbar-width: none;
+	box-sizing: border-box;
 }
 
 .home-page.expanded {
-	width: calc(96.6vw - 85px); /* sidebar yopiq */
-	
+	left: 100px; /* sidebar yopiq holati */
+	width: calc(99vw - 100px);
 }
-
 
 /* AOS sakrash muammosini bartaraf etish */
 [data-aos].aos-animate {
 	transform: none !important;
 }
 
-
 .element-card-bar {
-  display: flex;
-	justify-content: center; /* markazga joylash */
-  align-items: center;
-}
-
-.swiper {
-	max-width: 100%; /* kenglik */
-	padding: 0 20px;
-}
-
-.swiper-button-prev {
-	left: 20px; /*chap strelka masofasi*/
-}
-
-.swiper-button-next {
-	right: 20px; /* o‘ng strelka masofasi */
-	position: relative;
-}
-
-.swiper-button-prev,
-.swiper-button-next {
-	color: var(--primary-color); /* strelka rangi */
-	display: block;
-	transition: 0.3s ease-in-out;
-	padding: 10px 17px;
-	border-radius: 50%;
 	display: flex;
-	justify-content: center;
+	justify-content: center; /* markazga joylash */
+	align-items: center;
+	gap: 10px;
 }
-
 
 .dashboard-element-card {
 	width: 85%;
 	height: 130px;
-	margin: 10px;
 	padding: 10px;
 	border-radius: 14px;
 	/* background-color: var(--white-color); */
@@ -72,7 +46,7 @@
 	cursor: pointer;
 	color: var(--primary-color);
 	text-align: center;
-  transition: all .3s ease;
+	transition: all 0.3s ease;
 	/* border: 2px solid var(--primary-color); */
 }
 .dashboard-element-card:hover {
