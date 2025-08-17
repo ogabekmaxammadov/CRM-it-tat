@@ -3,7 +3,7 @@
 	background-color: var(--primary-color);
 	position: fixed;
 	top: 1vh;
-	bottom: 1vh; /* pastdan 10px bo‘sh joy */
+	bottom: 1vh;
 	/* height: calc(95vh - 4vh); */
 	left: 1vh;
 	padding: 20px 0px 20px 10px;

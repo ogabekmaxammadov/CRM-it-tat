@@ -131,9 +131,8 @@
 }
 
 .header-modals.hideModal {
-	transition: all 0.3s ease-in-out;
-	animation: hideModal 0.5s ease-in-out;
-	display: none !important;
+	animation: hideModal 0.3s ease-in-out forwards;
+	overflow: hidden;
 }
 
 .plus-modal::before {
@@ -143,10 +142,9 @@
 	left: 20px;
 	border-left: 10px solid transparent;
 	border-right: 10px solid transparent;
-	border-bottom: 10px solid #ddd; /* border rangi */
+	border-bottom: 10px solid #ddd;
 }
 
-/* Strelkaga soyani ham bersak */
 .plus-modal::after {
 	content: '';
 	position: absolute;
@@ -154,11 +152,11 @@
 	left: 21px;
 	border-left: 9px solid transparent;
 	border-right: 9px solid transparent;
-	border-bottom: 9px solid var(--primary-color); /* menyu foni */
+	border-bottom: 9px solid var(--primary-color);
 }
 
 .plus-modal.collapsed {
-	left: 105px; /* sidebar yopilganda suriladi */
+	left: 105px;
 }
 
 .header-modals h2 {
@@ -186,32 +184,24 @@
 } */
 
 @keyframes showModal {
-	0% {
-		height: 0;
+	from {
+		max-height: 0;
+		opacity: 0;
 	}
-	25% {
-		height: auto;
-	}
-	50% {
-		height: auto;
-	}
-	75% {
-		height: auto;
-	}
-	100% {
-		height: auto;
+	to {
+		max-height: 500px;
+		opacity: 1;
 	}
 }
 
 @keyframes hideModal {
-	0% {
-		height: auto;
+	from {
+		max-height: 500px;
+		opacity: 1;
 	}
-	25% {
-		height: 17.2%;
-	}
-	100% {
-		height: 0;
+	to {
+		max-height: 0;
+		opacity: 0;
 	}
 }
 
@@ -241,7 +231,6 @@
 	border-bottom: 10px solid #ddd; /* border rangi */
 }
 
-/* Strelkaga soyani ham bersak */
 .account-modal::after {
 	content: '';
 	position: absolute;
@@ -249,7 +238,7 @@
 	left: 128px;
 	border-left: 9px solid transparent;
 	border-right: 9px solid transparent;
-	border-bottom: 9px solid var(--primary-color); /* menyu foni */
+	border-bottom: 9px solid var(--primary-color);
 }
 
 .account-modal hr {

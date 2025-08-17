@@ -26,18 +26,6 @@ const HeaderSection = ({ collapsed, className, onLogout }) => {
 		setTimeout(() => setAosOnce(false), 1000) // 1 soniyadan keyin data-aos olib tashlanadi
 	}, [])
 
-	/*************  ✨ Windsurf Command ⭐  *************/
-
-	/**
-	 * Toggles the fullscreen mode of the document.
-	 *
-	 * If the document is not currently in fullscreen mode, it will be
-	 * set to fullscreen mode. If it is already in fullscreen mode, it
-	 * will be set to windowed mode.
-	 *
-	 * @return {void} This function does not return anything.
-	 */
-	/*******  ce6aff3e-87c3-4853-931f-4c31c0d1ae9e  *******/
 	const toggleFullScreen = () => {
 		if (!isFull) {
 			if (document.documentElement.requestFullscreen) {
@@ -69,7 +57,7 @@ const HeaderSection = ({ collapsed, className, onLogout }) => {
 				collapsed ? 'collapsed' : ''
 			}`}
 			style={headerStyle}
-			{...(aosOnce ? { 'data-aos': 'fade-down' } : {})} // faqat birinchi marta qo‘yiladi
+			{...(aosOnce ? { 'data-aos': 'fade-down' } : {})}
 		>
 			<FaRegPlusSquare
 				className='header-icon'
