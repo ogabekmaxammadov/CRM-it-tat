@@ -1,6 +1,9 @@
-const GroupsPage = () => {
+const GroupsPage = ({ collapsed }) => {
 	return (
-		<div className='home-page'>
+		<div
+			className={`home-page ${collapsed ? 'expanded' : ''}`}
+			data-aos='fade-left'
+		>
 			<h1>Groups Page</h1>
 		</div>
 	)
