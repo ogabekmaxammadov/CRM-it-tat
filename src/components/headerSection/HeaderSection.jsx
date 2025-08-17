@@ -1,19 +1,43 @@
 import { useEffect, useState } from 'react'
 import { AiOutlineFullscreen, AiOutlineFullscreenExit } from 'react-icons/ai'
+import { CiCirclePlus } from 'react-icons/ci'
 import { FaBell, FaRegPlusSquare } from 'react-icons/fa'
+import { GiShinyPurse } from 'react-icons/gi'
 import { IoSearch } from 'react-icons/io5'
 import { LuClock5 } from 'react-icons/lu'
 import { SlPicture } from 'react-icons/sl'
 import './HeaderSection.css'
 
-const HeaderSection = ({ collapsed, className }) => {
+const HeaderSection = ({ collapsed, className, onLogout }) => {
 	const [isFull, setIsFull] = useState(false)
-	const [aosOnce, setAosOnce] = useState(true) // faqat 1 marta ishlash uchun
+	const [aosOnce, setAosOnce] = useState(true)
+	const [showModal, setShowModal] = useState(false)
+	const [showAccountModal, setShowAccountModal] = useState(false)
+
+	const handleAccountModal = () => {
+		setShowAccountModal(!showAccountModal)
+	}
+
+	const handleModal = () => {
+		setShowModal(!showModal)
+	}
 
 	useEffect(() => {
 		setTimeout(() => setAosOnce(false), 1000) // 1 soniyadan keyin data-aos olib tashlanadi
 	}, [])
 
+	/*************  ✨ Windsurf Command ⭐  *************/
+
+	/**
+	 * Toggles the fullscreen mode of the document.
+	 *
+	 * If the document is not currently in fullscreen mode, it will be
+	 * set to fullscreen mode. If it is already in fullscreen mode, it
+	 * will be set to windowed mode.
+	 *
+	 * @return {void} This function does not return anything.
+	 */
+	/*******  ce6aff3e-87c3-4853-931f-4c31c0d1ae9e  *******/
 	const toggleFullScreen = () => {
 		if (!isFull) {
 			if (document.documentElement.requestFullscreen) {
@@ -47,7 +71,13 @@ const HeaderSection = ({ collapsed, className }) => {
 			style={headerStyle}
 			{...(aosOnce ? { 'data-aos': 'fade-down' } : {})} // faqat birinchi marta qo‘yiladi
 		>
-			<FaRegPlusSquare className='header-icon' />
+			<FaRegPlusSquare
+				className='header-icon'
+				onClick={() => {
+					handleModal()
+					setShowAccountModal(false)
+				}}
+			/>
 			<div className='search display-flex'>
 				<input type='search' placeholder='Qidirish' />
 				<IoSearch className='search-icon header-icon' />
@@ -72,10 +102,48 @@ const HeaderSection = ({ collapsed, className }) => {
 				<LuClock5 className='header-icon clock' />
 				<FaBell className='header-icon clock' />
 				<h4>Asliddin Hakimov</h4>
-				<div className='account'>
-					<SlPicture className='account-icon' />
-				</div>
+
+				<SlPicture
+					className='account-icon'
+					onClick={() => {
+						handleAccountModal()
+						setShowModal(false)
+					}}
+				/>
 			</div>
+			{showModal && (
+				<div
+					className={`plus-modal header-modals ${
+						showModal ? 'showModal' : 'hideModal'
+					} ${collapsed ? 'collapsed' : ''}`}
+				>
+					<h2 className='display-flex'>
+						<CiCirclePlus />
+
+						<span>Yangi Talaba</span>
+					</h2>
+					<h2 className='display-flex'>
+						<GiShinyPurse />
+
+						<span>To'lov</span>
+					</h2>
+				</div>
+			)}
+			{showAccountModal && (
+				<div
+					className={`account-modal header-modals ${
+						showAccountModal ? 'showModal' : 'hideModal'
+					} `}
+				>
+					<h2 className='display-flex'>
+						<span>Hisob qaydnomasi</span>
+					</h2>
+					<hr />
+					<h2 className='display-flex' onClick={onLogout}>
+						<span>Chiqish</span>
+					</h2>
+				</div>
+			)}
 		</div>
 	)
 }

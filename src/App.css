@@ -36,9 +36,6 @@ body {
 	display: flex;
 	align-items: center;
 }
-.menu-section {
-	/* height: 100%; */
-}
 
 ul {
 	list-style: none;
@@ -60,4 +57,34 @@ a {
 	background-color: var(--white-color);
 	border-radius: 14px;
 	overflow-y: auto;
+}
+
+/* Sahifalar uchun */
+.home-page {
+	position: absolute;
+	/* height: 85vh; */
+	padding: 20px;
+	/* margin-top: 10px; */
+	bottom: 1vh;
+	top: 13vh;
+	left: 266px;
+	right: 10px;
+	/* width: calc(99vw - 260px);	 */
+	background-color: var(--white-color);
+	border: 1px solid var(--primary-color);
+	border-radius: 14px;
+	transition: all 0.3s ease-out !important;
+	overflow-y: scroll;
+	scrollbar-width: none;
+	box-sizing: border-box;
+}
+
+.home-page.expanded {
+	left: 105px; /* sidebar yopiq holati */
+	width: calc(99vw - 100px);
+}
+
+/* AOS sakrash muammosini bartaraf etish */
+[data-aos].aos-animate {
+	transform: none !important;
 }

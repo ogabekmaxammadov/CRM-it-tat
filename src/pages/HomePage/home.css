@@ -1,9 +1,9 @@
 .home-page {
-	position: relative;
-	height: 85vh;
+	position: absolute;
+	/* height: 85vh; */
 	padding: 20px;
-	margin-top: 10px;
-	left: 260px;
+	/* margin-top: 10px; */
+	/* left: 260px; */
 	width: calc(99vw - 260px);
 	background-color: var(--white-color);
 	border: 1px solid var(--primary-color);
@@ -15,7 +15,7 @@
 }
 
 .home-page.expanded {
-	left: 100px; /* sidebar yopiq holati */
+	left: 105px; /* sidebar yopiq holati */
 	width: calc(99vw - 100px);
 }
 
@@ -47,6 +47,7 @@
 	color: var(--primary-color);
 	text-align: center;
 	transition: all 0.3s ease;
+	gap: -5px;
 	/* border: 2px solid var(--primary-color); */
 }
 .dashboard-element-card:hover {

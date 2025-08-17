@@ -10,7 +10,6 @@ import { PiStudentBold } from 'react-icons/pi'
 import { SiContactlesspayment } from 'react-icons/si'
 
 const HomePage = ({ collapsed }) => {
-
 	const cards = [
 		{ title: 'Active lids', icon: <FaRegUser />, number: 113 },
 		{ title: 'Faol talabalar', icon: <PiStudentBold />, number: 113 },
@@ -31,26 +30,24 @@ const HomePage = ({ collapsed }) => {
 	]
 
 	return (
-		<div className={`home-page ${collapsed ? 'expanded' : ''}`} data-aos="fade-left">
+		<div
+			className={`home-page ${collapsed ? 'expanded' : ''}`}
+			data-aos='fade-left'
+		>
 			<div className='element-card-bar'>
-				
-				
-					{cards.map((card, index) => (
-						<div className='dashboard-element-card'>
-								<div className='card-icon'>
-									<i>{card.icon}</i>
-								</div>
-								<div>
-									<p>{card.title}</p>
-								</div>
-								<br />
-								<div>
-									<h1>{card.number}</h1>
-								</div>
-							</div>
-								
-					))}
-				
+				{cards.map((card, index) => (
+					<div className='dashboard-element-card'>
+						<div className='card-icon'>
+							<i>{card.icon}</i>
+						</div>
+						<div>
+							<p>{card.title}</p>
+						</div>
+						<div>
+							<h1>{card.number}</h1>
+						</div>
+					</div>
+				))}
 			</div>
 			<div className='table'>
 				<div className='table-prev '>

@@ -6,8 +6,11 @@ import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import './App.css'
 import HeaderSection from './components/headerSection/HeaderSection'
 import MenuSection from './components/MenuSection/MenuSection'
+import GroupsPage from './pages/GroupsPage/GroupsPage'
 import HomePage from './pages/HomePage/HomePage'
 import LoginPage from './pages/LoginPage/LoginPage'
+import StudentsPage from './pages/StudentsPage/StudentsPage'
+import TeachersPage from './pages/TeachersPage/TeachersPage'
 
 function App() {
 	const [collapsed, setCollapsed] = useState(false)
@@ -57,6 +60,7 @@ function App() {
 						<HeaderSection
 							collapsed={collapsed}
 							className={`header-section ${collapsed ? 'collapsed' : ''}`}
+							onLogout={handleLogout}
 						/>
 					</>
 				)}
@@ -72,6 +76,36 @@ function App() {
 							element={
 								isAuthenticated ? (
 									<HomePage onLogout={handleLogout} collapsed={collapsed} />
+								) : (
+									<Navigate to='/login' replace />
+								)
+							}
+						/>
+						<Route
+							path='/teachers'
+							element={
+								isAuthenticated ? (
+									<TeachersPage onLogout='handleLogout' collapsed={collapsed} />
+								) : (
+									<Navigate to='/login' replace />
+								)
+							}
+						/>
+						<Route
+							path='/students'
+							element={
+								isAuthenticated ? (
+									<StudentsPage onLogout='handleLogout' collapsed={collapsed} />
+								) : (
+									<Navigate to='/login' replace />
+								)
+							}
+						/>
+						<Route
+							path='/groups'
+							element={
+								isAuthenticated ? (
+									<GroupsPage onLogout='handleLogout' collapsed={collapsed} />
 								) : (
 									<Navigate to='/login' replace />
 								)
