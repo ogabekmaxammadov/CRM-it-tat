@@ -1,11 +1,11 @@
-import AOS from 'aos'
 import 'aos/dist/aos.css'
-import { useEffect, useState } from 'react'
-import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
+import { useState } from 'react'
+import { Navigate, Route, Routes } from 'react-router-dom'
 
 import './App.css'
 import HeaderSection from './components/headerSection/HeaderSection'
 import MenuSection from './components/MenuSection/MenuSection'
+import NoteFound from './components/notefound/NoteFound'
 import GroupsPage from './pages/GroupsPage/GroupsPage'
 import HomePage from './pages/HomePage/HomePage'
 import LoginPage from './pages/LoginPage/LoginPage'
@@ -14,27 +14,25 @@ import TeachersPage from './pages/TeachersPage/TeachersPage'
 
 function App() {
 	const [collapsed, setCollapsed] = useState(false)
-
-	const toggleCollapse = () => {
-		setCollapsed(prev => !prev)
-	}
-
 	const [isAuthenticated, setIsAuthenticated] = useState(
 		localStorage.getItem('isAuthenticated') === 'true'
 	)
+	const [showModal, setShowModal] = useState(false)
 
-	const location = useLocation()
+	const handleModal = () => setShowModal(prev => !prev)
+	const hideModal = () => setShowModal(false)
 
-	useEffect(() => {
-		AOS.init({ duration: 1000, once: true })
-	}, [])
+	const toggleCollapse = () => setCollapsed(prev => !prev)
 
-	// 🔹 sidebar toggle bo‘lganda AOS qayta hisoblaydi
-	useEffect(() => {
-		setTimeout(() => {
-			AOS.refresh()
-		}, 50)
-	}, [collapsed])
+	// useEffect(() => {
+	// 	AOS.init({ duration: 1000, once: true })
+	// }, [])
+
+	// useEffect(() => {
+	// 	setTimeout(() => {
+	// 		AOS.refresh()
+	// 	}, 50)
+	// }, [collapsed])
 
 	const handleLogin = () => {
 		localStorage.setItem('isAuthenticated', 'true')
@@ -46,74 +44,77 @@ function App() {
 		setIsAuthenticated(false)
 	}
 
+	// 🔹 Protected layout (faqat login bo‘lganda)
+	const ProtectedLayout = ({ children }) => (
+		<>
+			<MenuSection collapsed={collapsed} toggleCollapse={toggleCollapse} />
+			<div className='right'>
+				<HeaderSection
+					collapsed={collapsed}
+					className={`header-section ${collapsed ? 'collapsed' : ''}`}
+					onLogout={handleLogout}
+					showModal={showModal}
+					onToggleModal={handleModal}
+					onHideModal={hideModal}
+				/>
+				<div className='pages'>{children}</div>
+			</div>
+		</>
+	)
+
 	return (
 		<div className='container'>
-			{location.pathname !== '/login' && (
-				<>
-					<MenuSection collapsed={collapsed} toggleCollapse={toggleCollapse} />
-				</>
-			)}
+			<Routes>
+				{/* 🔹 Login bo‘lmagan */}
+				<Route path='/login' element={<LoginPage onLogin={handleLogin} />} />
 
-			<div className='right'>
-				{location.pathname !== '/login' && (
+				{/* 🔹 Login qilingan sahifalar */}
+				{isAuthenticated ? (
 					<>
-						<HeaderSection
-							collapsed={collapsed}
-							className={`header-section ${collapsed ? 'collapsed' : ''}`}
-							onLogout={handleLogout}
-						/>
-					</>
-				)}
-
-				<div className='pages'>
-					<Routes>
-						<Route
-							path='/login'
-							element={<LoginPage onLogin={handleLogin} />}
-						/>
 						<Route
 							path='/'
 							element={
-								isAuthenticated ? (
-									<HomePage onLogout={handleLogout} collapsed={collapsed} />
-								) : (
-									<Navigate to='/login' replace />
-								)
+								<ProtectedLayout>
+									<HomePage
+										onLogout={handleLogout}
+										collapsed={collapsed}
+										hideModal={hideModal}
+									/>
+								</ProtectedLayout>
 							}
 						/>
 						<Route
 							path='/teachers'
 							element={
-								isAuthenticated ? (
-									<TeachersPage onLogout='handleLogout' collapsed={collapsed} />
-								) : (
-									<Navigate to='/login' replace />
-								)
+								<ProtectedLayout>
+									<TeachersPage onLogout={handleLogout} collapsed={collapsed} />
+								</ProtectedLayout>
 							}
 						/>
 						<Route
 							path='/students'
 							element={
-								isAuthenticated ? (
-									<StudentsPage onLogout='handleLogout' collapsed={collapsed} />
-								) : (
-									<Navigate to='/login' replace />
-								)
+								<ProtectedLayout>
+									<StudentsPage onLogout={handleLogout} collapsed={collapsed} />
+								</ProtectedLayout>
 							}
 						/>
 						<Route
 							path='/groups'
 							element={
-								isAuthenticated ? (
-									<GroupsPage onLogout='handleLogout' collapsed={collapsed} />
-								) : (
-									<Navigate to='/login' replace />
-								)
+								<ProtectedLayout>
+									<GroupsPage onLogout={handleLogout} collapsed={collapsed} />
+								</ProtectedLayout>
 							}
 						/>
-					</Routes>
-				</div>
-			</div>
+						{/* 🔹 NotFound sahifasi layoutSIZ chiqadi */}
+						<Route path='*' element={<NoteFound />} />
+					</>
+				) : (
+					// 🔹 Login qilinmagan bo‘lsa → faqat login page
+					<Route path='*' element={<Navigate to='/login' replace />} />
+				)}
+			</Routes>
 		</div>
 	)
 }

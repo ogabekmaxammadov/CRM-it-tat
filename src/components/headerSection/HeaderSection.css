@@ -15,14 +15,9 @@
 	justify-content: space-between;
 	align-items: center;
 	justify-content: space-between;
-	transition: all 0.3s ease-out;
-	flex-shrink: 0;
-	/* margin-left: calc(var(--sidebar-width) + 20px);  */
-}
+	transition: margin-left 0.3s ease, width 0.3s ease;
 
-.header-section.aos-animate {
-	transform: none !important;
-	opacity: 1 !important;
+	/* margin-left: calc(var(--sidebar-width) + 20px);  */
 }
 
 .search {
@@ -139,7 +134,7 @@
 	content: '';
 	position: absolute;
 	top: -10px;
-	left: 20px;
+	left: 19px;
 	border-left: 10px solid transparent;
 	border-right: 10px solid transparent;
 	border-bottom: 10px solid #ddd;

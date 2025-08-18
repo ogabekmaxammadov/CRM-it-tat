@@ -11,7 +11,7 @@ import './MenuSection.css'
 
 const MenuSection = ({ collapsed, toggleCollapse }) => {
 	return (
-		<div data-aos='fade-right'>
+		<div>
 			<div className={`menu-section ${collapsed ? 'collapsed' : ''}`}>
 				<div className='logo display-flex'>
 					<img src={logo} alt='Logo' />

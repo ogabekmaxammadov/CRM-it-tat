@@ -50,7 +50,7 @@ const LoginPage = ({ onLogin }) => {
 								name='tel'
 							/>
 						</div>
-						<div className='pass-input'>
+						<div className='pass-input '>
 							<label htmlFor='password'>Parol</label>
 							<input
 								type={showPassword ? 'text' : 'password'}

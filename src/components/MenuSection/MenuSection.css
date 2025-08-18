@@ -4,32 +4,31 @@
 	position: fixed;
 	top: 1vh;
 	bottom: 1vh;
-	/* height: calc(95vh - 4vh); */
 	left: 1vh;
 	padding: 20px 0px 20px 10px;
-	/* box-sizing: border-box; */
 	overflow-y: scroll;
+	overflow-x: hidden;
 	border-radius: 14px;
+	transition: width 0.4s ease-in-out, background-color 0.3s ease-in-out;
 }
 
+/* Scroll yashirish */
 .menu-section::-webkit-scrollbar {
 	display: none;
 }
 
+/* Logo */
 .logo {
 	width: 220px;
-	/* align-items: center; */
 	text-align: center;
-	position: absolute;
-	left: 50%;
-	transform: translateX(-25%);
+	margin: 0 auto 40px auto;
 	transition: all 0.3s ease;
-	/* justify-content: center; */
 }
 
 .logo img {
 	width: 50%;
 	cursor: pointer;
+	transition: transform 0.3s ease-in-out;
 }
 
 .logo img:hover {
@@ -40,16 +39,9 @@
 	0% {
 		transform: scale(1);
 	}
-
 	50% {
 		transform: scale(1.1);
 	}
-	/* 50% {
-		transform: scale(1);
-	}
-	75% {
-		transform: scale(1.1);
-	} */
 	100% {
 		transform: scale(1);
 	}
@@ -58,16 +50,13 @@
 .logo h2 {
 	font-size: 28px;
 	color: var(--white-color);
-	font-family: Poppins;
+	font-family: Poppins, sans-serif;
 	font-weight: 700;
 }
 
-.logo {
-	margin-bottom: 40px;
-}
-
+/* Navigatsiya */
 nav {
-	padding-top: 100px;
+	padding-top: 10px;
 }
 
 ul {
@@ -77,34 +66,39 @@ ul {
 	background-color: var(--primary-color);
 }
 
+/* Linklar */
 a {
 	display: flex;
 	align-items: center;
 	padding: 15px;
 	gap: 15px;
-	transition: all.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
 	border-top-left-radius: 12px;
 	border-bottom-left-radius: 12px;
 	background-color: var(--primary-color);
+	text-decoration: none;
 }
 
 a .nav-icon {
 	color: var(--white-color);
 	font-size: 35px;
+	transition: color 0.3s ease-in-out;
 }
 
 a h2 {
 	font-size: 18px;
 	color: var(--white-color);
-	font-family: Poppins;
+	font-family: Poppins, sans-serif;
 	font-weight: 400;
+	opacity: 1;
+	max-width: 200px; /* sidebar kengligiga mos */
+	transition: opacity 0.3s ease, max-width 0.3s ease;
 }
 
+/* Active link */
 .isActive {
 	background-color: var(--white-color);
 	color: var(--primary-color);
-	border-top-left-radius: 12px;
-	border-bottom-left-radius: 12px;
 }
 
 .isActive .nav-icon {
@@ -115,6 +109,7 @@ a h2 {
 	color: var(--primary-color);
 }
 
+/* Sidebar close tugmasi */
 .close-side-bar {
 	position: absolute;
 	bottom: 20px;
@@ -124,24 +119,28 @@ a h2 {
 	cursor: pointer;
 }
 
-/* ? sidebar close */
-.menu-section {
-	background-color: #4a74a8;
-	color: white;
-	/* width: 240px; */
-	transition: width 0.3s ease;
-}
-
+/* 🔹 Collapsed holat */
 .menu-section.collapsed {
 	width: 80px;
-	transition: all 0.3s ease-in-out;
 }
 
-.collapsed .logo {
+/* Logo kichrayadi */
+.menu-section.collapsed .logo {
 	width: 130px;
-	transition: all 0.3s ease;
 }
 
-.menu-section.collapsed h2 {
-	display: none;
+/* Matn yashiriladi */
+.menu-section.collapsed a h2,
+.menu-section.collapsed .logo h2 {
+	opacity: 0;
+	max-width: 0;
+	overflow: hidden;
+	transition: opacity 0.3s ease, max-width 0.3s ease;
+}
+
+/* Faqat icon markazda qoladi */
+.menu-section.collapsed a {
+	justify-content: center;
+	gap: 0;
+	padding: 15px 0;
 }

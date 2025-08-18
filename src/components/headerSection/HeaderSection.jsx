@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { AiOutlineFullscreen, AiOutlineFullscreenExit } from 'react-icons/ai'
 import { CiCirclePlus } from 'react-icons/ci'
 import { FaBell, FaRegPlusSquare } from 'react-icons/fa'
@@ -10,7 +10,6 @@ import './HeaderSection.css'
 
 const HeaderSection = ({ collapsed, className, onLogout }) => {
 	const [isFull, setIsFull] = useState(false)
-	const [aosOnce, setAosOnce] = useState(true)
 	const [showModal, setShowModal] = useState(false)
 	const [showAccountModal, setShowAccountModal] = useState(false)
 
@@ -22,9 +21,9 @@ const HeaderSection = ({ collapsed, className, onLogout }) => {
 		setShowModal(!showModal)
 	}
 
-	useEffect(() => {
-		setTimeout(() => setAosOnce(false), 1000) // 1 soniyadan keyin data-aos olib tashlanadi
-	}, [])
+	const hideModal = () => {
+		setShowModal(false)
+	}
 
 	const toggleFullScreen = () => {
 		if (!isFull) {
@@ -57,7 +56,6 @@ const HeaderSection = ({ collapsed, className, onLogout }) => {
 				collapsed ? 'collapsed' : ''
 			}`}
 			style={headerStyle}
-			{...(aosOnce ? { 'data-aos': 'fade-down' } : {})}
 		>
 			<FaRegPlusSquare
 				className='header-icon'

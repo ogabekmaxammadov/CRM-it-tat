@@ -8,8 +8,8 @@
 	background-color: var(--white-color);
 	border: 1px solid var(--primary-color);
 	border-radius: 14px;
-	transition: all 0.3s ease-out !important;
-	overflow-y: scroll;
+	transition: left 0.3s ease, width 0.3s ease;
+	overflow-y: auto;
 	scrollbar-width: none;
 	box-sizing: border-box;
 }
@@ -17,6 +17,7 @@
 .home-page.expanded {
 	left: 105px; /* sidebar yopiq holati */
 	width: calc(99vw - 100px);
+	transition: all 0.3s ease-out !important;
 }
 
 /* AOS sakrash muammosini bartaraf etish */
@@ -38,7 +39,7 @@
 	border-radius: 14px;
 	/* background-color: var(--white-color); */
 	/* background-color: #d4d2d2; */
-	box-shadow: 0px 3px 21px 3px rgba(34, 60, 80, 0.18);
+	/* box-shadow: 0px 3px 21px 3px rgba(34, 60, 80, 0.18); */
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -47,45 +48,18 @@
 	color: var(--primary-color);
 	text-align: center;
 	transition: all 0.3s ease;
-	gap: -5px;
-	/* border: 2px solid var(--primary-color); */
+	position: relative;
+	gap: 7px;
+	border: 0.5px solid var(--grey-color);
 }
 .dashboard-element-card:hover {
-	transform: scale(1.02);
+	box-shadow: 0px 3px 21px 3px rgba(34, 60, 80, 0.2);
 }
 
-.dashboard-element-card:only-child i {
-	font-size: 32px;
-}
-
-.dashboard-element-card:only-child h1 {
-	font-size: 25px;
-}
-
-.dashboard-element-card:only-child p {
-	font-size: 16px;
-	gap: 10px;
-	font-family: Poppins;
-	margin-bottom: 0px;
-}
-
-.dashboard-element-card:only-child h2 {
-	font-size: 20px;
-	font-family: Poppins;
+.dashboard-element-card .card-icon i {
+	font-size: 30px;
+	color: #f18247;
 	font-weight: 400;
-}
-
-.swiper-button-prev,
-.swiper-button-next {
-	color: black;
-}
-
-.swiper-button-prev {
-	left: 5px; /* chapdan 15px */
-}
-
-.swiper-button-next {
-	right: 5px; /* o‘ngdan 15px */
 }
 
 /* jadval */

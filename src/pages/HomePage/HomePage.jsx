@@ -9,7 +9,7 @@ import { MdConnectedTv } from 'react-icons/md'
 import { PiStudentBold } from 'react-icons/pi'
 import { SiContactlesspayment } from 'react-icons/si'
 
-const HomePage = ({ collapsed }) => {
+const HomePage = ({ collapsed, hideModal }) => {
 	const cards = [
 		{ title: 'Active lids', icon: <FaRegUser />, number: 113 },
 		{ title: 'Faol talabalar', icon: <PiStudentBold />, number: 113 },
@@ -32,10 +32,10 @@ const HomePage = ({ collapsed }) => {
 	return (
 		<div
 			className={`home-page ${collapsed ? 'expanded' : ''}`}
-			data-aos='fade-left'
+			onClick={hideModal}
 		>
 			<div className='element-card-bar'>
-				{cards.map((card, index) => (
+				{cards.map(card => (
 					<div className='dashboard-element-card'>
 						<div className='card-icon'>
 							<i>{card.icon}</i>

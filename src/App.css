@@ -9,6 +9,7 @@ body {
 	background-color: var(--white-color);
 	position: relative;
 	overflow: hidden;
+	transition: all 0.3s ease-in-out;
 }
 
 :root {
