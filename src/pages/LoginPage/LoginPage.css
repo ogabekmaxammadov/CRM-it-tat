@@ -23,6 +23,9 @@
 	height: 100%;
 	border-top-left-radius: 14px;
 	border-bottom-left-radius: 14px;
+	background-position: center;
+	background-size: cover;
+	object-fit: cover;
 }
 
 .form-sec {
