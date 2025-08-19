@@ -11,7 +11,7 @@ const NotFound = () => {
 	return (
 		<div className='notefound'>
 			<h1>404</h1>
-			<p>Page not found</p>
+			<p>Bunday sahifa mavjud emas</p>
 			<button onClick={handleClick}>Go to Login Page</button>
 		</div>
 	)

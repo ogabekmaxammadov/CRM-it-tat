@@ -23,6 +23,8 @@
 	text-align: center;
 	margin: 0 auto 40px auto;
 	transition: all 0.3s ease;
+	justify-content: center;
+	transition: transform 0.3s ease-in-out;
 }
 
 .logo img {
@@ -52,6 +54,7 @@
 	color: var(--white-color);
 	font-family: Poppins, sans-serif;
 	font-weight: 700;
+	transition: opacity 0.3s ease, max-width 0.3s ease;
 }
 
 /* Navigatsiya */
@@ -127,6 +130,7 @@ a h2 {
 /* Logo kichrayadi */
 .menu-section.collapsed .logo {
 	width: 130px;
+	justify-content: left;
 }
 
 /* Matn yashiriladi */
@@ -135,12 +139,12 @@ a h2 {
 	opacity: 0;
 	max-width: 0;
 	overflow: hidden;
-	transition: opacity 0.3s ease, max-width 0.3s ease;
+	transition: opacity 0.4s ease-in-out, max-width 0.4s ease-in-out;
 }
 
 /* Faqat icon markazda qoladi */
 .menu-section.collapsed a {
 	justify-content: center;
-	gap: 0;
 	padding: 15px 0;
+	transition: justify-content 0.4s ease-in-out, padding 0.4s ease-in-out;
 }

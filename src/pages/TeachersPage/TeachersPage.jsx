@@ -1,8 +1,8 @@
-const TeachersPage = ({ collapsed }) => {
+const TeachersPage = ({ collapsed, hideModal }) => {
 	return (
 		<div
 			className={`home-page ${collapsed ? 'expanded' : ''}`}
-			data-aos='fade-left'
+			onClick={hideModal}
 		>
 			<h1>Teachers Page</h1>
 		</div>

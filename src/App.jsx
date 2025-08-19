@@ -18,10 +18,20 @@ function App() {
 		localStorage.getItem('isAuthenticated') === 'true'
 	)
 	const [showModal, setShowModal] = useState(false)
+	const [showAccountModal, setShowAccountModal] = useState(false)
 
-	const handleModal = () => setShowModal(prev => !prev)
-	const hideModal = () => setShowModal(false)
-
+	const handleModal = () => {
+		setShowModal(prev => !prev)
+		setShowAccountModal(false) // 🔹 bittasi ochilganda boshqasi yopilsin
+	}
+	const handleAccountModal = () => {
+		setShowAccountModal(prev => !prev)
+		setShowModal(false) // 🔹 bittasi ochilganda boshqasi yopilsin
+	}
+	const hideModal = () => {
+		setShowModal(false)
+		setShowAccountModal(false) // 🔹 ikkalasini birdaniga yopadi
+	}
 	const toggleCollapse = () => setCollapsed(prev => !prev)
 
 	// useEffect(() => {
@@ -54,7 +64,9 @@ function App() {
 					className={`header-section ${collapsed ? 'collapsed' : ''}`}
 					onLogout={handleLogout}
 					showModal={showModal}
+					showAccountModal={showAccountModal}
 					onToggleModal={handleModal}
+					onToggleAccountModal={handleAccountModal}
 					onHideModal={hideModal}
 				/>
 				<div className='pages'>{children}</div>
@@ -87,7 +99,11 @@ function App() {
 							path='/teachers'
 							element={
 								<ProtectedLayout>
-									<TeachersPage onLogout={handleLogout} collapsed={collapsed} />
+									<TeachersPage
+										onLogout={handleLogout}
+										collapsed={collapsed}
+										hideModal={hideModal}
+									/>
 								</ProtectedLayout>
 							}
 						/>
@@ -95,7 +111,11 @@ function App() {
 							path='/students'
 							element={
 								<ProtectedLayout>
-									<StudentsPage onLogout={handleLogout} collapsed={collapsed} />
+									<StudentsPage
+										onLogout={handleLogout}
+										collapsed={collapsed}
+										hideModal={hideModal}
+									/>
 								</ProtectedLayout>
 							}
 						/>
@@ -103,7 +123,11 @@ function App() {
 							path='/groups'
 							element={
 								<ProtectedLayout>
-									<GroupsPage onLogout={handleLogout} collapsed={collapsed} />
+									<GroupsPage
+										onLogout={handleLogout}
+										collapsed={collapsed}
+										hideModal={hideModal}
+									/>
 								</ProtectedLayout>
 							}
 						/>

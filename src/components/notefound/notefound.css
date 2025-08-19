@@ -12,10 +12,12 @@
 .notefound h1 {
 	font-size: 100px;
 	margin-bottom: 20px;
+	font-family: Raleway;
 }
 
 .notefound p {
 	font-size: 24px;
+	font-family: Poppins;
 }
 
 .notefound button {
@@ -27,4 +29,6 @@
 	border: none;
 	border-radius: 4px;
 	cursor: pointer;
+	font-family: Raleway;
+	font-weight: 500;
 }

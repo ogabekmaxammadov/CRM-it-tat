@@ -8,22 +8,16 @@ import { LuClock5 } from 'react-icons/lu'
 import { SlPicture } from 'react-icons/sl'
 import './HeaderSection.css'
 
-const HeaderSection = ({ collapsed, className, onLogout }) => {
+const HeaderSection = ({
+	collapsed,
+	className,
+	onLogout,
+	showModal,
+	showAccountModal,
+	onToggleModal,
+	onToggleAccountModal,
+}) => {
 	const [isFull, setIsFull] = useState(false)
-	const [showModal, setShowModal] = useState(false)
-	const [showAccountModal, setShowAccountModal] = useState(false)
-
-	const handleAccountModal = () => {
-		setShowAccountModal(!showAccountModal)
-	}
-
-	const handleModal = () => {
-		setShowModal(!showModal)
-	}
-
-	const hideModal = () => {
-		setShowModal(false)
-	}
 
 	const toggleFullScreen = () => {
 		if (!isFull) {
@@ -46,6 +40,7 @@ const HeaderSection = ({ collapsed, className, onLogout }) => {
 			setIsFull(false)
 		}
 	}
+
 	const headerStyle = {
 		marginLeft: collapsed ? '100px' : '260px',
 	}
@@ -60,10 +55,10 @@ const HeaderSection = ({ collapsed, className, onLogout }) => {
 			<FaRegPlusSquare
 				className='header-icon'
 				onClick={() => {
-					handleModal()
-					setShowAccountModal(false)
+					onToggleModal()
 				}}
 			/>
+
 			<div className='search display-flex'>
 				<input type='search' placeholder='Qidirish' />
 				<IoSearch className='search-icon header-icon' />
@@ -92,11 +87,12 @@ const HeaderSection = ({ collapsed, className, onLogout }) => {
 				<SlPicture
 					className='account-icon'
 					onClick={() => {
-						handleAccountModal()
-						setShowModal(false)
+						onToggleAccountModal()
 					}}
 				/>
 			</div>
+
+			{/* 🔹 Plus modal */}
 			{showModal && (
 				<div
 					className={`plus-modal header-modals ${
@@ -105,21 +101,21 @@ const HeaderSection = ({ collapsed, className, onLogout }) => {
 				>
 					<h2 className='display-flex'>
 						<CiCirclePlus />
-
 						<span>Yangi Talaba</span>
 					</h2>
 					<h2 className='display-flex'>
 						<GiShinyPurse />
-
 						<span>To'lov</span>
 					</h2>
 				</div>
 			)}
+
+			{/* 🔹 Account modal */}
 			{showAccountModal && (
 				<div
 					className={`account-modal header-modals ${
 						showAccountModal ? 'showModal' : 'hideModal'
-					} `}
+					}`}
 				>
 					<h2 className='display-flex'>
 						<span>Hisob qaydnomasi</span>
