@@ -6,7 +6,7 @@
 	/* left: 260px; */
 	width: calc(99vw - 260px);
 	background-color: var(--white-color);
-	border: 1px solid var(--primary-color);
+	/* border: 1px solid var(--primary-color); */
 	border-radius: 14px;
 	transition: left 0.4s ease, width 0.4s ease;
 	overflow-y: auto;

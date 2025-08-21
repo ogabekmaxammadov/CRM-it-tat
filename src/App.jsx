@@ -57,7 +57,11 @@ function App() {
 	// 🔹 Protected layout (faqat login bo‘lganda)
 	const ProtectedLayout = ({ children }) => (
 		<>
-			<MenuSection collapsed={collapsed} toggleCollapse={toggleCollapse} />
+			<MenuSection
+				collapsed={collapsed}
+				toggleCollapse={toggleCollapse}
+				hideModal={hideModal}
+			/>
 			<div className='right'>
 				<HeaderSection
 					collapsed={collapsed}

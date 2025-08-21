@@ -72,7 +72,7 @@ a {
 	right: 10px;
 	/* width: calc(99vw - 260px);	 */
 	background-color: var(--white-color);
-	border: 1px solid var(--primary-color);
+	/* border: 1px solid var(--primary-color); */
 	border-radius: 14px;
 	transition: all 0.3s ease-out !important;
 	overflow-y: scroll;

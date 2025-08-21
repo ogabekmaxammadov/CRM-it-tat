@@ -9,10 +9,13 @@ import { NavLink } from 'react-router-dom'
 import logo from '../../assets/footer_logo.png'
 import './MenuSection.css'
 
-const MenuSection = ({ collapsed, toggleCollapse }) => {
+const MenuSection = ({ collapsed, toggleCollapse, hideModal }) => {
 	return (
 		<div>
-			<div className={`menu-section ${collapsed ? 'collapsed' : ''}`}>
+			<div
+				className={`menu-section ${collapsed ? 'collapsed' : ''}`}
+				onClick={hideModal}
+			>
 				<div className='logo display-flex'>
 					<img src={logo} alt='Logo' />
 				</div>
