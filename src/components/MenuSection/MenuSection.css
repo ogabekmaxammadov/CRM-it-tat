@@ -70,7 +70,7 @@ ul {
 }
 
 /* Linklar */
-a {
+ul a {
 	display: flex;
 	align-items: center;
 	padding: 15px;
@@ -82,13 +82,13 @@ a {
 	text-decoration: none;
 }
 
-a .nav-icon {
+ul a .nav-icon {
 	color: var(--white-color);
 	font-size: 35px;
 	transition: color 0.3s ease-in-out;
 }
 
-a h2 {
+ul a h2 {
 	font-size: 18px;
 	color: var(--white-color);
 	font-family: Poppins, sans-serif;

@@ -10,6 +10,7 @@ import GroupsPage from './pages/GroupsPage/GroupsPage'
 import HomePage from './pages/HomePage/HomePage'
 import LoginPage from './pages/LoginPage/LoginPage'
 import StudentsPage from './pages/StudentsPage/StudentsPage'
+import TeacherEditPage from './pages/TeacherEditPage/TeacherEditPage'
 import TeachersPage from './pages/TeachersPage/TeachersPage'
 
 function App() {
@@ -116,6 +117,18 @@ function App() {
 							element={
 								<ProtectedLayout>
 									<StudentsPage
+										onLogout={handleLogout}
+										collapsed={collapsed}
+										hideModal={hideModal}
+									/>
+								</ProtectedLayout>
+							}
+						/>
+						<Route
+							path='/teacher-edit'
+							element={
+								<ProtectedLayout>
+									<TeacherEditPage
 										onLogout={handleLogout}
 										collapsed={collapsed}
 										hideModal={hideModal}

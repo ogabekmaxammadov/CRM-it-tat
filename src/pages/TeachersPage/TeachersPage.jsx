@@ -1,13 +1,15 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { CiCircleRemove } from 'react-icons/ci'
 import { FaEllipsisH, FaPhone } from 'react-icons/fa'
 import { MdLocalPostOffice } from 'react-icons/md'
+import { Link } from 'react-router-dom'
 import './TeachersPage.css'
 
 const TeachersPage = ({ collapsed, hideModal }) => {
 	const [showAddTeacher, setShowAddTeacher] = useState(false)
 	const [fileName, setFileName] = useState('Hech narsa tanlanmagan')
-
+	const [openMenuIndex, setOpenMenuIndex] = useState(null)
+	const [selectedPhone, setSelectedPhone] = useState(null)
 	const [teachers, setTeachers] = useState([
 		{
 			img: 'https://upload.wikimedia.org/wikipedia/commons/8/8b/Valeriy_Konovalyuk_3x4.jpg',
@@ -15,9 +17,9 @@ const TeachersPage = ({ collapsed, hideModal }) => {
 			subject: 'Frontend',
 			phone: '998 99 999 99 99',
 			date: '2021-01-01',
+			jeans: 'Erkak',
 		},
 	])
-
 	const [formData, setFormData] = useState({
 		phone: '',
 		name: '',
@@ -27,12 +29,9 @@ const TeachersPage = ({ collapsed, hideModal }) => {
 		foto: '',
 	})
 
-	// Telefon modal uchun state
-	const [selectedPhone, setSelectedPhone] = useState(null)
+	const cardRefs = useRef([])
 
-	const toggleAddTeacher = () => {
-		setShowAddTeacher(prev => !prev)
-	}
+	const toggleAddTeacher = () => setShowAddTeacher(prev => !prev)
 
 	const handleChange = e => {
 		const { name, value, type, files } = e.target
@@ -59,13 +58,35 @@ const TeachersPage = ({ collapsed, hideModal }) => {
 		setFormData({
 			phone: '',
 			name: '',
+			subject: '',
 			date: '',
 			jeans: '',
 			foto: '',
-			subject: '',
 		})
 		setFileName('Hech narsa tanlanmagan')
 	}
+
+	const toggleMenu = index =>
+		setOpenMenuIndex(prev => (prev === index ? null : index))
+
+	const handleDelete = index => {
+		setTeachers(prev => prev.filter((_, i) => i !== index))
+		setOpenMenuIndex(null)
+	}
+
+	useEffect(() => {
+		const handleClickOutside = e => {
+			if (
+				openMenuIndex !== null &&
+				cardRefs.current[openMenuIndex] &&
+				!cardRefs.current[openMenuIndex].contains(e.target)
+			) {
+				setOpenMenuIndex(null)
+			}
+		}
+		document.addEventListener('mousedown', handleClickOutside)
+		return () => document.removeEventListener('mousedown', handleClickOutside)
+	}, [openMenuIndex])
 
 	return (
 		<div
@@ -86,9 +107,15 @@ const TeachersPage = ({ collapsed, hideModal }) => {
 
 			<div className='teachers-table'>
 				{teachers.map((t, index) => (
-					<div className='teacher' key={index}>
+					<div
+						className='teacher'
+						key={index}
+						ref={el => (cardRefs.current[index] = el)}
+					>
 						<img src={t.img} alt='' />
-						<h2>{t.name}</h2>
+						<Link to='/teacher-edit' onClick={e => e.stopPropagation()}>
+							<h2>{t.name}</h2>
+						</Link>
 						<h3>{t.subject}</h3>
 						<div className='teacher-web display-flex'>
 							<FaPhone
@@ -100,12 +127,33 @@ const TeachersPage = ({ collapsed, hideModal }) => {
 							/>
 							<MdLocalPostOffice className='teacher-icon' />
 						</div>
-						<FaEllipsisH className='menu-icon' />
+
+						<FaEllipsisH
+							className='menu-icon'
+							onClick={e => {
+								e.stopPropagation()
+								toggleMenu(index)
+							}}
+						/>
+
+						{openMenuIndex === index && (
+							<div className='editTeacher'>
+								<Link to='/teacher-edit' onClick={e => e.stopPropagation()}>
+									<h2>Tahrirlash</h2>
+								</Link>
+								<h2>SMS</h2>
+								<h2
+									onClick={() => handleDelete(index)}
+									style={{ color: 'red', cursor: 'pointer' }}
+								>
+									O'chirish
+								</h2>
+							</div>
+						)}
 					</div>
 				))}
 			</div>
 
-			{/* Add Teacher Modal */}
 			{showAddTeacher && (
 				<div className='add-teacher'>
 					<div className='none-content' onClick={toggleAddTeacher}></div>
@@ -118,7 +166,6 @@ const TeachersPage = ({ collapsed, hideModal }) => {
 							/>
 						</div>
 						<hr />
-
 						<form onSubmit={handleSubmit}>
 							<div className='inp'>
 								<label htmlFor='phone'>Telefon</label>
@@ -140,7 +187,6 @@ const TeachersPage = ({ collapsed, hideModal }) => {
 									onChange={handleChange}
 								/>
 							</div>
-
 							<div className='inp'>
 								<label htmlFor='subject'>Yo'nalishi</label>
 								<input
@@ -161,7 +207,6 @@ const TeachersPage = ({ collapsed, hideModal }) => {
 									onChange={handleChange}
 								/>
 							</div>
-
 							<div className='inp'>
 								<label>Jinsi</label>
 								<div className='jeans'>
@@ -183,7 +228,6 @@ const TeachersPage = ({ collapsed, hideModal }) => {
 									<label>Ayol</label>
 								</div>
 							</div>
-
 							<div className='foto'>
 								<label htmlFor='foto' className='foto-label'>
 									Rasm
@@ -196,7 +240,6 @@ const TeachersPage = ({ collapsed, hideModal }) => {
 								/>
 								<p>{fileName}</p>
 							</div>
-
 							<button
 								type='submit'
 								className='add-teacher-btn'
@@ -215,7 +258,6 @@ const TeachersPage = ({ collapsed, hideModal }) => {
 				</div>
 			)}
 
-			{/* Telefon Modal */}
 			{selectedPhone && (
 				<div className='phone-modal'>
 					<div
