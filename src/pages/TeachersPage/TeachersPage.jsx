@@ -91,10 +91,10 @@ const TeachersPage = ({ collapsed, hideModal }) => {
 	return (
 		<div
 			className={`home-page ${collapsed ? 'expanded' : ''}`}
-			onClick={hideModal}
+			onClick={hideModal}	
 		>
 			<div className='teachers-inform display-flex'>
-				<div className='teachers-num display-flex'>
+				<div className='pages-num display-flex'>
 					<h2>O'qituvchilar</h2>
 					<h4>
 						Miqdor - <span>{teachers.length}</span>

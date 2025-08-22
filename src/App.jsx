@@ -12,6 +12,7 @@ import LoginPage from './pages/LoginPage/LoginPage'
 import StudentsPage from './pages/StudentsPage/StudentsPage'
 import TeacherEditPage from './pages/TeacherEditPage/TeacherEditPage'
 import TeachersPage from './pages/TeachersPage/TeachersPage'
+import GroupsEditPage from './pages/groupseditpage/GroupsEditPage'
 
 function App() {
 	const [collapsed, setCollapsed] = useState(false)
@@ -134,6 +135,7 @@ function App() {
 										hideModal={hideModal}
 									/>
 								</ProtectedLayout>
+
 							}
 						/>
 						<Route
@@ -148,6 +150,21 @@ function App() {
 								</ProtectedLayout>
 							}
 						/>
+						<Route
+							path='/groups-edit'
+							element={
+								<ProtectedLayout>
+									<GroupsEditPage
+										onLogout={handleLogout}
+										collapsed={collapsed}
+										hideModal={hideModal}
+									/>
+								</ProtectedLayout>
+							}
+						/>
+
+							
+
 						{/* 🔹 NotFound sahifasi layoutSIZ chiqadi */}
 						<Route path='*' element={<NoteFound />} />
 					</>
