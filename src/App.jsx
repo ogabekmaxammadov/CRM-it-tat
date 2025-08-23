@@ -7,6 +7,7 @@ import HeaderSection from './components/headerSection/HeaderSection'
 import Loader from './components/Loader/Loader' // 🔹 Loader import
 import MenuSection from './components/MenuSection/MenuSection'
 import NoteFound from './components/notefound/NoteFound'
+import GroupsEditPage from './pages/groupseditpage/GroupsEditPage'
 import GroupsPage from './pages/GroupsPage/GroupsPage'
 import HomePage from './pages/HomePage/HomePage'
 import LoginPage from './pages/LoginPage/LoginPage'
@@ -158,6 +159,20 @@ function App() {
 								</ProtectedLayout>
 							}
 						/>
+						<Route
+							path='/groups-edit'
+							element={
+								<ProtectedLayout>
+									<GroupsEditPage
+										onLogout={handleLogout}
+										collapsed={collapsed}
+										hideModal={hideModal}
+									/>
+								</ProtectedLayout>
+							}
+						/>
+
+						{/* 🔹 NotFound sahifasi layoutSIZ chiqadi */}
 						<Route path='*' element={<NoteFound />} />
 					</>
 				) : (

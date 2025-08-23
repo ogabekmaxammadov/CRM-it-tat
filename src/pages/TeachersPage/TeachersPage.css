@@ -1,31 +1,31 @@
-.teachers-inform {
+.pages-inform {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 }
 
-.teachers-num {
+.pages-num {
 	display: flex;
 	align-items: center;
 	gap: 15px;
 	justify-content: center;
 }
 
-.teachers-num h2 {
+.pages-num h2 {
 	font-size: 30px;
 	font-family: Poppins;
 	color: rgb(29, 34, 41);
 	font-weight: 500;
 }
 
-.teachers-num h4 {
+.pages-num h4 {
 	font-size: 18px;
 	font-family: Poppins;
 	color: rgb(49, 53, 54);
 	font-weight: 400;
 }
 
-.teachers-inform button {
+.pages-inform button {
 	padding: 15px 30px;
 	border-radius: 14px;
 	background-color: var(--primary-color);
@@ -36,7 +36,7 @@
 	font-family: Regular;
 }
 
-.teachers-inform button:hover {
+.pages-inform button:hover {
 	background-color: #3e5a8f;
 	transition: all 0.4s ease-in-out;
 }
