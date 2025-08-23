@@ -1,9 +1,10 @@
 import 'aos/dist/aos.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 
 import './App.css'
 import HeaderSection from './components/headerSection/HeaderSection'
+import Loader from './components/Loader/Loader' // 🔹 Loader import
 import MenuSection from './components/MenuSection/MenuSection'
 import NoteFound from './components/notefound/NoteFound'
 import GroupsPage from './pages/GroupsPage/GroupsPage'
@@ -20,30 +21,26 @@ function App() {
 	)
 	const [showModal, setShowModal] = useState(false)
 	const [showAccountModal, setShowAccountModal] = useState(false)
+	const [loading, setLoading] = useState(true)
+
+	useEffect(() => {
+		const timer = setTimeout(() => setLoading(false), 3000)
+		return () => clearTimeout(timer)
+	}, [])
 
 	const handleModal = () => {
 		setShowModal(prev => !prev)
-		setShowAccountModal(false) // 🔹 bittasi ochilganda boshqasi yopilsin
+		setShowAccountModal(false)
 	}
 	const handleAccountModal = () => {
 		setShowAccountModal(prev => !prev)
-		setShowModal(false) // 🔹 bittasi ochilganda boshqasi yopilsin
+		setShowModal(false)
 	}
 	const hideModal = () => {
 		setShowModal(false)
-		setShowAccountModal(false) // 🔹 ikkalasini birdaniga yopadi
+		setShowAccountModal(false)
 	}
 	const toggleCollapse = () => setCollapsed(prev => !prev)
-
-	// useEffect(() => {
-	// 	AOS.init({ duration: 1000, once: true })
-	// }, [])
-
-	// useEffect(() => {
-	// 	setTimeout(() => {
-	// 		AOS.refresh()
-	// 	}, 50)
-	// }, [collapsed])
 
 	const handleLogin = () => {
 		localStorage.setItem('isAuthenticated', 'true')
@@ -55,7 +52,6 @@ function App() {
 		setIsAuthenticated(false)
 	}
 
-	// 🔹 Protected layout (faqat login bo‘lganda)
 	const ProtectedLayout = ({ children }) => (
 		<>
 			<MenuSection
@@ -79,13 +75,27 @@ function App() {
 		</>
 	)
 
+	if (loading) {
+		return (
+			<div
+				style={{
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
+					height: '100vh',
+					backgroundColor: '#fff',
+				}}
+			>
+				<Loader />
+			</div>
+		)
+	}
+
 	return (
 		<div className='container'>
 			<Routes>
-				{/* 🔹 Login bo‘lmagan */}
 				<Route path='/login' element={<LoginPage onLogin={handleLogin} />} />
 
-				{/* 🔹 Login qilingan sahifalar */}
 				{isAuthenticated ? (
 					<>
 						<Route
@@ -148,11 +158,9 @@ function App() {
 								</ProtectedLayout>
 							}
 						/>
-						{/* 🔹 NotFound sahifasi layoutSIZ chiqadi */}
 						<Route path='*' element={<NoteFound />} />
 					</>
 				) : (
-					// 🔹 Login qilinmagan bo‘lsa → faqat login page
 					<Route path='*' element={<Navigate to='/login' replace />} />
 				)}
 			</Routes>
