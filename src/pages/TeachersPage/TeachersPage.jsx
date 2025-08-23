@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
-import { CiCircleRemove } from 'react-icons/ci'
 import { FaEllipsisH, FaPhone } from 'react-icons/fa'
 import { MdLocalPostOffice } from 'react-icons/md'
 import { Link } from 'react-router-dom'
+import AddTeacherModal from './AddTeacherModal'
+import EditTeacherModal from './EditTeacherModal'
 import './TeachersPage.css'
 
 const TeachersPage = ({ collapsed, hideModal }) => {
@@ -10,6 +11,8 @@ const TeachersPage = ({ collapsed, hideModal }) => {
 	const [fileName, setFileName] = useState('Hech narsa tanlanmagan')
 	const [openMenuIndex, setOpenMenuIndex] = useState(null)
 	const [selectedPhone, setSelectedPhone] = useState(null)
+	const [editTeacherIndex, setEditTeacherIndex] = useState(null)
+
 	const [teachers, setTeachers] = useState([
 		{
 			img: 'https://upload.wikimedia.org/wikipedia/commons/8/8b/Valeriy_Konovalyuk_3x4.jpg',
@@ -20,6 +23,7 @@ const TeachersPage = ({ collapsed, hideModal }) => {
 			jeans: 'Erkak',
 		},
 	])
+
 	const [formData, setFormData] = useState({
 		phone: '',
 		name: '',
@@ -74,6 +78,30 @@ const TeachersPage = ({ collapsed, hideModal }) => {
 		setOpenMenuIndex(null)
 	}
 
+	const editTeacherShow = index => {
+		setEditTeacherIndex(index)
+		setOpenMenuIndex(null)
+	}
+	const closeEditTeacher = () => setEditTeacherIndex(null)
+
+	const handleEditChange = (e, index) => {
+		const { name, value, type, files } = e.target
+		setTeachers(prev => {
+			const updated = [...prev]
+			if (type === 'file') {
+				updated[index].img = URL.createObjectURL(files[0])
+			} else {
+				updated[index][name] = value
+			}
+			return updated
+		})
+	}
+
+	const handleEditSubmit = (e, index) => {
+		e.preventDefault()
+		closeEditTeacher()
+	}
+
 	useEffect(() => {
 		const handleClickOutside = e => {
 			if (
@@ -91,9 +119,9 @@ const TeachersPage = ({ collapsed, hideModal }) => {
 	return (
 		<div
 			className={`home-page ${collapsed ? 'expanded' : ''}`}
-			onClick={hideModal}	
+			onClick={hideModal}
 		>
-			<div className='teachers-inform display-flex'>
+			<div className='teachers-inform pages-inform display-flex'>
 				<div className='pages-num display-flex'>
 					<h2>O'qituvchilar</h2>
 					<h4>
@@ -138,9 +166,7 @@ const TeachersPage = ({ collapsed, hideModal }) => {
 
 						{openMenuIndex === index && (
 							<div className='editTeacher'>
-								<Link to='/teacher-edit' onClick={e => e.stopPropagation()}>
-									<h2>Tahrirlash</h2>
-								</Link>
+								<h2 onClick={() => editTeacherShow(index)}>Tahrirlash</h2>
 								<h2>SMS</h2>
 								<h2
 									onClick={() => handleDelete(index)}
@@ -154,110 +180,19 @@ const TeachersPage = ({ collapsed, hideModal }) => {
 				))}
 			</div>
 
+			{/* Qo'shish modal */}
 			{showAddTeacher && (
-				<div className='add-teacher'>
-					<div className='none-content' onClick={toggleAddTeacher}></div>
-					<div className='add-form'>
-						<div className='add-header display-flex'>
-							<h2>O'qituvchi qo'shish</h2>
-							<CiCircleRemove
-								className='close-icon'
-								onClick={toggleAddTeacher}
-							/>
-						</div>
-						<hr />
-						<form onSubmit={handleSubmit}>
-							<div className='inp'>
-								<label htmlFor='phone'>Telefon</label>
-								<input
-									type='tel'
-									name='phone'
-									className='input'
-									value={formData.phone}
-									onChange={handleChange}
-								/>
-							</div>
-							<div className='inp'>
-								<label htmlFor='name'>Ism</label>
-								<input
-									type='text'
-									name='name'
-									className='input'
-									value={formData.name}
-									onChange={handleChange}
-								/>
-							</div>
-							<div className='inp'>
-								<label htmlFor='subject'>Yo'nalishi</label>
-								<input
-									type='text'
-									name='subject'
-									className='input'
-									value={formData.subject}
-									onChange={handleChange}
-								/>
-							</div>
-							<div className='inp'>
-								<label htmlFor='date'>Tug'ilgan sana</label>
-								<input
-									type='date'
-									name='date'
-									className='input'
-									value={formData.date}
-									onChange={handleChange}
-								/>
-							</div>
-							<div className='inp'>
-								<label>Jinsi</label>
-								<div className='jeans'>
-									<input
-										type='radio'
-										name='jeans'
-										value='Erkak'
-										checked={formData.jeans === 'Erkak'}
-										onChange={handleChange}
-									/>
-									<label>Erkak</label>
-									<input
-										type='radio'
-										name='jeans'
-										value='Ayol'
-										checked={formData.jeans === 'Ayol'}
-										onChange={handleChange}
-									/>
-									<label>Ayol</label>
-								</div>
-							</div>
-							<div className='foto'>
-								<label htmlFor='foto' className='foto-label'>
-									Rasm
-								</label>
-								<input
-									type='file'
-									name='foto'
-									className='file-inp'
-									onChange={handleChange}
-								/>
-								<p>{fileName}</p>
-							</div>
-							<button
-								type='submit'
-								className='add-teacher-btn'
-								disabled={
-									!formData.phone ||
-									!formData.name ||
-									!formData.subject ||
-									!formData.date ||
-									!formData.jeans
-								}
-							>
-								Qo'shish
-							</button>
-						</form>
-					</div>
-				</div>
+				<AddTeacherModal
+					show={showAddTeacher}
+					onClose={toggleAddTeacher}
+					formData={formData}
+					onChange={handleChange}
+					onSubmit={handleSubmit}
+					fileName={fileName}
+				/>
 			)}
 
+			{/* Telefon modal */}
 			{selectedPhone && (
 				<div className='phone-modal'>
 					<div
@@ -268,6 +203,17 @@ const TeachersPage = ({ collapsed, hideModal }) => {
 						<a href={`tel:${selectedPhone}`}>{selectedPhone}</a>
 					</div>
 				</div>
+			)}
+
+			{editTeacherIndex !== null && (
+				<EditTeacherModal
+					show={editTeacherIndex !== null}
+					onClose={closeEditTeacher}
+					teacher={teachers[editTeacherIndex]}
+					index={editTeacherIndex}
+					onChange={handleEditChange}
+					onSubmit={handleEditSubmit}
+				/>
 			)}
 		</div>
 	)

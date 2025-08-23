@@ -1,10 +1,10 @@
 import 'aos/dist/aos.css'
 import { useEffect, useState } from 'react'
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 
 import './App.css'
 import HeaderSection from './components/headerSection/HeaderSection'
-import Loader from './components/Loader/Loader' // 🔹 Loader import
+import Loader from './components/Loader/Loader'
 import MenuSection from './components/MenuSection/MenuSection'
 import NoteFound from './components/notefound/NoteFound'
 import GroupsEditPage from './pages/groupseditpage/GroupsEditPage'
@@ -24,10 +24,18 @@ function App() {
 	const [showAccountModal, setShowAccountModal] = useState(false)
 	const [loading, setLoading] = useState(true)
 
+	const location = useLocation()
+
 	useEffect(() => {
 		const timer = setTimeout(() => setLoading(false), 3000)
 		return () => clearTimeout(timer)
 	}, [])
+
+	useEffect(() => {
+		setLoading(true)
+		const timer = setTimeout(() => setLoading(false), 3000)
+		return () => clearTimeout(timer)
+	}, [location.pathname])
 
 	const handleModal = () => {
 		setShowModal(prev => !prev)
@@ -172,7 +180,6 @@ function App() {
 							}
 						/>
 
-						{/* 🔹 NotFound sahifasi layoutSIZ chiqadi */}
 						<Route path='*' element={<NoteFound />} />
 					</>
 				) : (
