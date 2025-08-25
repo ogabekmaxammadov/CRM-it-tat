@@ -41,7 +41,7 @@
 .title-groups>p {
     font-size: 16px;
     font-weight: 600;
-    color: white;
+    color: var(--white-color);
     margin: 1px;
     text-align: left;
     padding: 1px;
@@ -49,13 +49,13 @@
 
 .groups {
     display: grid;
-    grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr 0.8fr 0.8fr 0.5fr 1fr 0.5fr 0.5fr;
+    grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr 0.8fr 0.8fr 0.5fr 1fr 0.5fr 0.5fr 0.1fr;
     /* background-color: var(--primary-color); */
     border-radius: 5px;
     margin-bottom: 10px;
     padding: 5px;
-    box-shadow: 0px 0px 14px -3px rgba(34, 60, 80, 0.3);
-    border: 1px solid var(--minus-blue);
+    box-shadow: 0px 0px 14px -3px rgba(34, 60, 80, 0.4);
+    /* border: 1px solid rgb(8, 98, 244); */
 }
 
 .groups p {
@@ -64,4 +64,137 @@
     padding: 15px;
     margin: 1px;
     text-align: left;
+}
+
+
+/* ? edit */
+
+.edit-icon {
+    position: relative;
+}
+
+.editGroups {
+    background-color: var(--white-color);
+    position: absolute;
+    top: 40%;
+    right: 01.5%;
+    width: 150px;
+    height: 100px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.editGroups>h2 {
+    padding: 5px;
+    border: 1px solid var(--primary-color);
+    margin: 5px 0px;
+    border-radius: 5px;
+    text-align: center;
+    color: var(--primary-color) !important;
+    cursor: pointer;
+}
+
+.form-selct {
+    padding: 5px 10px;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 1px solid var(--black-color);
+    background-color: var(--white-color);
+    outline: none;
+}
+
+.form-selct:active {
+    border: 1px solid rgb(8, 98, 244);
+}
+
+.form-selct>option {
+    padding: 5px 10px;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 1px solid var(--black-color);
+}
+
+
+/* ? side bar  */
+
+.slide-form-panel {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 400px;
+    max-width: 90%;
+    height: 100%;
+    background-color: var(--white-color);
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+    padding: 30px 20px;
+    box-sizing: border-box;
+    transition: right 0.4s ease-in-out;
+    z-index: 1000;
+    overflow-y: auto;
+    border-left: 3px solid var(--primary-color);
+    border-radius: 8px 0 0 8px;
+}
+
+.slide-form-panel.open {
+    right: 0;
+}
+
+
+/* Form ichidagi selectlar */
+
+.add-groups-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+
+/* Yopish tugmasi */
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: var(--black-color);
+    transition: all .4s ease;
+}
+
+.close-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.add-groups-form h3 {
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+
+/* Submit button */
+
+.add-groups-form button[type='submit'] {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.add-groups-form button[type='submit']:hover {
+    background-color: var(--primary-color);
 }

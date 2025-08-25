@@ -1,37 +1,33 @@
-import { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './grouppage.css'
 import { Link } from 'react-router-dom'
-import { FaEllipsisH, FaPhone } from 'react-icons/fa'
-import { MdLocalPostOffice } from 'react-icons/md'
+import { Select } from 'antd'
+import { CiEdit } from "react-icons/ci";
+
 
 const GroupsPage = ({ collapsed, hideModal }) => {
 	const [showAddTeacher, setShowAddTeacher] = useState(false)
 	const [fileName, setFileName] = useState('Hech narsa tanlanmagan')
 	const [openMenuIndex, setOpenMenuIndex] = useState(null)
-	const [selectedPhone, setSelectedPhone] = useState(null)
-
-	const [groups, setGroups] = useState([
-		{
-			guruh: 'guruh',
-			kurslar: 'kurslar',
-			oqituvchilar: 'oqituvchilar',
-			kunlar: 'kunlar',
-			mashgulotlarSanasi: 'mashgulotlarSanasi',
-			otilganMuddat: 'otilganMuddat',
-			xonalar: 'xonalar',
-			yaqindaTugatadiganlar: 'yaqindaTugatadiganlar',
-			talabalar: 'Talabalar',
-			tugatganlar: 'Tugatganlar'
-		},
-	])
+	const [editIndex, setEditIndex] = useState(null)
+	const [groups, setGroups] = useState([])
+	const [statusFilter, setStatusFilter] = useState('faol')
+	const [mentorFilter, setMentorFilter] = useState('')
+	const [subjectFilter, setSubjectFilter] = useState('')
+	const [genderFilter, setGenderFilter] = useState('')
+	const [dateFilter, setDateFilter] = useState('')
 
 	const [formData, setFormData] = useState({
-		phone: '',
-		name: '',
-		subject: '',
-		date: '',
 		guruh: '',
-		foto: '',
+		kurslar: '',
+		oqituvchilar: '',
+		kunlar: '',
+		mashgulotlarSanasi: '',
+		otilganMuddat: '',
+		xonalar: '',
+		yaqindaTugatadiganlar: '',
+		talabalar: '',
+		tugatganlar: '',
 	})
 
 	const cardRefs = useRef([])
@@ -48,25 +44,42 @@ const GroupsPage = ({ collapsed, hideModal }) => {
 		}
 	}
 
+	const handleEdit = index => {
+		setEditIndex(index)
+		setFormData(groups[index])
+		setShowAddTeacher(true)
+	}
+
 	const handleSubmit = e => {
 		e.preventDefault()
-		const newGroup = {
-			img: formData.foto || 'https://via.placeholder.com/150',
-			name: formData.name,
-			subject: formData.subject || 'Fan kiritilmagan',
-			phone: formData.phone || 'Telefon kiritilmagan',
-			date: formData.date,
-			guruh: formData.guruh,
+
+		if (editIndex !== null) {
+			// Edit mode
+			const updatedGroups = [...groups]
+			updatedGroups[editIndex] = formData
+			setGroups(updatedGroups)
+			localStorage.setItem('groupsData', JSON.stringify(updatedGroups))
+			setEditIndex(null)
+		} else {
+			// Add new group
+			const newGroup = { ...formData }
+			const updatedGroups = [...groups, newGroup]
+			setGroups(updatedGroups)
+			localStorage.setItem('groupsData', JSON.stringify(updatedGroups))
 		}
-		setGroups(prev => [...prev, newGroup])
+
 		setShowAddTeacher(false)
 		setFormData({
-			phone: '',
-			name: '',
-			subject: '',
-			date: '',
 			guruh: '',
-			foto: '',
+			kurslar: '',
+			oqituvchilar: '',
+			kunlar: '',
+			mashgulotlarSanasi: '',
+			otilganMuddat: '',
+			xonalar: '',
+			yaqindaTugatadiganlar: '',
+			talabalar: '',
+			tugatganlar: '',
 		})
 		setFileName('Hech narsa tanlanmagan')
 	}
@@ -76,7 +89,11 @@ const GroupsPage = ({ collapsed, hideModal }) => {
 	}
 
 	const handleDelete = index => {
-		setGroups(prev => prev.filter((_, i) => i !== index))
+		setGroups(prev => {
+			const updatedGroups = prev.filter((_, i) => i !== index)
+			localStorage.setItem('groupsData', JSON.stringify(updatedGroups))
+			return updatedGroups
+		})
 		setOpenMenuIndex(null)
 	}
 
@@ -94,20 +111,15 @@ const GroupsPage = ({ collapsed, hideModal }) => {
 		return () => document.removeEventListener('mousedown', handleClickOutside)
 	}, [openMenuIndex])
 
-
-	// Filter qiymatlarini boshqarish uchun state
-  const [statusFilter, setStatusFilter] = useState('faol')
-  const [mentorFilter, setMentorFilter] = useState('')
-  const [subjectFilter, setSubjectFilter] = useState('')
-  const [genderFilter, setGenderFilter] = useState('')
-  const [dateFilter, setDateFilter] = useState('')
-
+	useEffect(() => {
+		const storedGroups = localStorage.getItem('groupsData')
+		if (storedGroups) {
+			setGroups(JSON.parse(storedGroups))
+		}
+	}, [])
 
 	return (
-		<div
-			className={`home-page ${collapsed ? 'expanded' : ''}`}
-			onClick={hideModal}
-		>
+		<div className={`home-page ${collapsed ? 'expanded' : ''}`} onClick={hideModal}>
 			<div className='pages-inform groups-top-inform display-flex'>
 				<div className='pages-num display-flex'>
 					<h2>Guruhlar</h2>
@@ -119,103 +131,58 @@ const GroupsPage = ({ collapsed, hideModal }) => {
 					Yangisini qo'shish
 				</button>
 			</div>
+
 			<br />
-		 <div className="inp-bar" style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-      {/* Guruh holati */}
-      <select
-        className="select-filter"
-        value={statusFilter}
-        onChange={(e) => setStatusFilter(e.target.value)}
-      >
-        <option value="faol">Faol guruhlar</option>
-        <option value="arxiv">Arxivlangan guruhlar</option>
-        <option value="yakunlangan">Yakunlangan guruhlar</option>
-      </select>
+			{/* FILTERLAR */}
+			<div className="inp-bar" style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+				<select className="select-filter" value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
+					<option value="faol">Faol guruhlar</option>
+					<option value="arxiv">Arxivlangan guruhlar</option>
+					<option value="yakunlangan">Yakunlangan guruhlar</option>
+				</select>
+				<select className="select-filter" value={mentorFilter} onChange={(e) => setMentorFilter(e.target.value)}>
+					<option value="">Mentor</option>
+					<option value="mentor1">Sayyorbek Khalikov</option>
+					<option value="mentor2">Shahnoza To‘xtaeva</option>
+					<option value="mentor3">Abdulloh Karimov</option>
+				</select>
+				<select className="select-filter" value={subjectFilter} onChange={(e) => setSubjectFilter(e.target.value)}>
+					<option value="">Fan</option>
+					<option value="frontend">Frontend</option>
+					<option value="backend">Backend</option>
+					<option value="design">Design</option>
+				</select>
+				<select className="select-filter" value={genderFilter} onChange={(e) => setGenderFilter(e.target.value)}>
+					<option value="">Jinsi</option>
+					<option value="Erkak">Erkak</option>
+					<option value="Ayol">Ayol</option>
+				</select>
+				<select className="select-filter" value={dateFilter} onChange={(e) => setDateFilter(e.target.value)}>
+					<option value="">Boshlanish sanasi</option>
+					<option value="2025-01-01">2025-01-01</option>
+					<option value="2025-06-01">2025-06-01</option>
+					<option value="2025-08-01">2025-08-01</option>
+				</select>
+			</div>
 
-      {/* Mentor tanlash */}
-      <select
-        className="select-filter"
-        value={mentorFilter}
-        onChange={(e) => setMentorFilter(e.target.value)}
-      >
-        <option value="">Mentor</option>
-        <option value="mentor1">Sayyorbek Khalikov</option>
-        <option value="mentor2">Shahnoza To‘xtaeva</option>
-        <option value="mentor3">Abdulloh Karimov</option>
-      </select>
+			{/* Sarlavhalar */}
+			<div className="title-groups">
+				<p>| Guruh</p>
+				<p>| Kurslar</p>
+				<p>| O`qituvchilar</p>
+				<p>| Kunlar</p>
+				<p>| Mashg`ulotlar sanasi</p>
+				<p>| O`tilgan muddat</p>
+				<p>| Xonalar</p>
+				<p>| Yaqinda tugatadiganlar</p>
+				<p>| Talabalar</p>
+				<p>| Tugatganlar</p>
+			</div>
 
-      {/* Fan tanlash */}
-      <select
-        className="select-filter"
-        value={subjectFilter}
-        onChange={(e) => setSubjectFilter(e.target.value)}
-      >
-        <option value="">Fan</option>
-        <option value="frontend">Frontend</option>
-        <option value="backend">Backend</option>
-        <option value="design">Design</option>
-      </select>
-
-      {/* Jinsi bo‘yicha filtr */}
-      <select
-        className="select-filter"
-        value={genderFilter}
-        onChange={(e) => setGenderFilter(e.target.value)}
-      >
-        <option value="">Jinsi</option>
-        <option value="Erkak">Erkak</option>
-        <option value="Ayol">Ayol</option>
-      </select>
-
-      {/* Sana bo‘yicha filtr */}
-      <select
-        className="select-filter"
-        value={dateFilter}
-        onChange={(e) => setDateFilter(e.target.value)}
-      >
-        <option value="">Boshlanish sanasi</option>
-        <option value="2025-01-01">2025-01-01</option>
-        <option value="2025-06-01">2025-06-01</option>
-        <option value="2025-08-01">2025-08-01</option>
-      </select>
-
-	  {/* ? tug`ilgan kun bo`yicha */}
-	   <select
-        className="select-filter"
-        value={dateFilter}
-        onChange={(e) => setDateFilter(e.target.value)}
-      >
-        <option value="">Boshlanish sanasi</option>
-        <option value="2025-01-01">2025-01-01</option>
-        <option value="2025-06-01">2025-06-01</option>
-        <option value="2025-08-01">2025-08-01</option>
-      </select>
-    </div>
-	{/* ? navbar groups */}
-
-		<div className="title-groups">
-			<p>| Guruh</p>
-			<p>| Kurslar</p>
-			<p>| O`qituvchilar</p>
-			<p>| Kunlar</p>
-			<p>| Mashg`ulotlar sanasi</p>
-			<p>| O`tilgan muddat</p>
-			<p>| Xonalar</p>
-			<p>| Yaqinda tugatadiganlar</p>
-			<p>| Talabalar</p>
-			<p>| Tugatganlar</p>
-		</div>
-
-
-
+			{/* Guruhlar ro‘yxati */}
 			<div className='groups-table'>
 				{groups.map((t, index) => (
-					<div
-						className='groups'
-						key={index}
-						ref={el => (cardRefs.current[index] = el)}
-					>
-						
+					<div className='groups' key={index} ref={el => (cardRefs.current[index] = el)}>
 						<Link to='/groups-edit' onClick={e => e.stopPropagation()}>
 							<p>{t.guruh}</p>
 						</Link>
@@ -228,19 +195,12 @@ const GroupsPage = ({ collapsed, hideModal }) => {
 						<p>{t.yaqindaTugatadiganlar}</p>
 						<p>{t.talabalar}</p>
 						<p>{t.tugatganlar}</p>
-						
+						<h2 className='edit-icon' onClick={() => toggleMenu(index)}><CiEdit /></h2>
 
-						
 						{openMenuIndex === index && (
 							<div className='editGroups'>
-								<Link to='/groups-edit' onClick={e => e.stopPropagation()}>
-									<h2>Tahrirlash</h2>
-								</Link>
-								<h2>SMS</h2>
-								<h2
-									onClick={() => handleDelete(index)}
-									style={{ color: 'red', cursor: 'pointer' }}
-								>
+								<h2 onClick={() => handleEdit(index)}>Tahrirlash</h2>
+								<h2 onClick={() => handleDelete(index)} style={{ color: 'red', cursor: 'pointer' }}>
 									O'chirish
 								</h2>
 							</div>
@@ -249,36 +209,40 @@ const GroupsPage = ({ collapsed, hideModal }) => {
 				))}
 			</div>
 
-			{showAddTeacher && (
-				<form
-					className='add-groups-form'
-					onSubmit={handleSubmit}
-					onClick={e => e.stopPropagation()}
-				>
-					
-					<select
-						name='guruh'
-						value={formData.guruh}
-						onChange={handleChange}
-						placeholder='guruh'
-					>
-						<option value='Frontend'>Frontend</option>
-						<option value='Backend'>Backend</option>
-						<option value='Foundation'>Foundation</option>
-						<option value='Grafik dizayn'>Grafik dizayn</option>
-						<option value='SMM'>SMM</option>
-						<option value='Kompiuter savotxonligi'>Kompiuter savotxonligi</option>
-						<option value='Robotexnika'>Robotexnika</option>
-					</select>
-					
+			{/* Qo‘shish/Tahrirlash paneli */}
+			<div className={`slide-form-panel ${showAddTeacher ? 'open' : ''}`} onClick={e => e.stopPropagation()}>
+				<form className='add-groups-form' onSubmit={handleSubmit}>
+					<h3>{editIndex !== null ? 'Guruhni tahrirlash' : 'Yangi guruh qo‘shish'}</h3>
+					<button type='button' className='close-btn' onClick={toggleAddTeacher}>✕</button>
+
+					{[
+						'guruh', 'kurslar', 'oqituvchilar', 'kunlar', 'mashgulotlarSanasi',
+						'otilganMuddat', 'xonalar', 'yaqindaTugatadiganlar', 'talabalar', 'tugatganlar'
+					].map((field, i) => (
+						<Select
+							key={i}
+							showSearch
+							style={{ width: '100%', fontSize: '20px', marginBottom: '10px' }}
+							placeholder={`${field}ni tanlang`}
+							value={formData[field]}
+							onChange={(value) => setFormData(prev => ({ ...prev, [field]: value }))}
+							options={[
+								{ value: '', label: 'Tanlang' },
+								{ value: 'Frontend', label: 'Frontend' },
+								{ value: 'Backend', label: 'Backend' },
+								{ value: 'Foundation', label: 'Foundation' },
+								{ value: 'Grafik dizayn', label: 'Grafik dizayn' },
+								{ value: 'SMM', label: 'SMM' },
+								{ value: 'Kompiuter savotxonligi', label: 'Kompiuter savotxonligi' },
+								{ value: 'Robotexnika', label: 'Robotexnika' },
+							]}
+						/>
+					))}
 
 					<span>{fileName}</span>
-					<button type='submit'>Qo'shish</button>
-					<button type='button' onClick={toggleAddTeacher}>
-						Bekor qilish
-					</button>
+					<button type='submit'>{editIndex !== null ? "Saqlash" : "Qo'shish"}</button>
 				</form>
-			)}
+			</div>
 		</div>
 	)
 }
