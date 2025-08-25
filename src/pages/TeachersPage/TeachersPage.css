@@ -1,276 +1,280 @@
 .pages-inform {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #28416e;
 }
 
 .pages-num {
-	display: flex;
-	align-items: center;
-	gap: 15px;
-	justify-content: center;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: center;
 }
 
 .pages-num h2 {
-	font-size: 30px;
-	font-family: Poppins;
-	color: rgb(29, 34, 41);
-	font-weight: 500;
+    font-size: 30px;
+    font-family: Poppins;
+    color: rgb(29, 34, 41);
+    font-weight: 500;
 }
 
 .pages-num h4 {
-	font-size: 18px;
-	font-family: Poppins;
-	color: rgb(49, 53, 54);
-	font-weight: 400;
+    font-size: 18px;
+    font-family: Poppins;
+    color: rgb(49, 53, 54);
+    font-weight: 400;
 }
 
 .pages-inform button {
-	padding: 15px 30px;
-	border-radius: 14px;
-	background-color: var(--primary-color);
-	color: var(--white-color);
-	border: none;
-	cursor: pointer;
-	font-size: 17px;
-	font-family: Regular;
+    padding: 15px 30px;
+    border-radius: 14px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    cursor: pointer;
+    font-size: 17px;
+    font-family: Regular;
 }
 
 .pages-inform button:hover {
-	background-color: #3e5a8f;
-	transition: all 0.4s ease-in-out;
+    background-color: #3e5a8f;
+    transition: all 0.4s ease-in-out;
 }
 
 .teachers-table {
-	display: grid;
-	width: 100%;
-	padding-top: 50px;
-	grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-	gap: 20px;
+    display: grid;
+    width: 100%;
+    padding-top: 50px;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 20px;
 }
 
 .teacher {
-	/* width: 23%; */
-	height: auto;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	padding: 30px 20px;
-	gap: 15px;
-	border-radius: 14px;
-	position: relative;
-	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-	border: 1px solid rgb(224, 218, 218);
+    /* width: 23%; */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+    gap: 15px;
+    border-radius: 14px;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgb(224, 218, 218);
 }
 
 .teacher:hover {
-	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-	transition: all 0.3s ease-in-out;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
 }
 
 .teacher img {
-	width: 70px;
-	height: 70px;
-	border-radius: 50%;
-	object-fit: cover;
-	background-position: center;
-	background-size: cover;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-position: center;
+    background-size: cover;
 }
 
 .teacher h2 {
-	font-size: 18px;
-	font-weight: 600;
-	font-family: Poppins;
-	color: var(--primary-color);
-	text-align: center;
-	cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: Poppins;
+    color: var(--primary-color);
+    text-align: center;
+    cursor: pointer;
 }
+
 .teacher h2:hover {
-	color: #28416e;
-	transition: all 0.3s ease-in-out;
+    color: #28416e;
+    transition: all 0.3s ease-in-out;
 }
 
 .teacher h3 {
-	font-size: 16px;
-	font-weight: 400;
-	font-family: Poppins;
-	color: #a098ae;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: Poppins;
+    color: #a098ae;
 }
 
 .teacher a {
-	background-color: transparent;
-	padding: 0;
-	width: 100%;
-	padding: 0;
+    background-color: transparent;
+    padding: 0;
+    width: 100%;
+    padding: 0;
 }
 
 .teacher a h2 {
-	text-align: center;
-	width: 100%;
+    text-align: center;
+    width: 100%;
 }
 
 .teacher-web {
-	gap: 15px;
+    gap: 15px;
 }
 
 .teacher-icon {
-	font-size: 22px;
-	padding: 8px;
-	background-color: var(--primary-color);
-	border-radius: 50%;
-	color: var(--white-color);
-	cursor: pointer;
-	border: 1px solid var(--primary-color);
+    font-size: 22px;
+    padding: 8px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    color: var(--white-color);
+    cursor: pointer;
+    border: 1px solid var(--primary-color);
 }
 
 .teacher-icon:hover {
-	background-color: var(--white-color);
-	color: var(--primary-color);
-	transition: all 0.4s ease-in-out;
-	border: 1px solid var(--primary-color);
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    transition: all 0.4s ease-in-out;
+    border: 1px solid var(--primary-color);
 }
 
 .menu-icon {
-	position: absolute;
-	left: 85%;
-	top: 10px;
-	cursor: pointer;
-	font-size: 24px;
-	color: #a098ae;
+    position: absolute;
+    left: 85%;
+    top: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #a098ae;
 }
 
 .menu-icon:hover {
-	color: var(--primary-color);
-	transition: all 0.3s ease-in-out;
+    color: var(--primary-color);
+    transition: all 0.3s ease-in-out;
 }
 
 .teacher-web a {
-	background-color: transparent;
-	padding: 0;
+    background-color: transparent;
+    padding: 0;
 }
 
 .add-teacher {
-	z-index: 1001;
-	position: fixed;
-	backdrop-filter: blur(5px);
-	background-color: rgba(0, 0, 0, 0.5);
-	width: 100vw;
-	height: 100vh;
-	top: 0;
-	left: 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	display: flex;
-	align-items: center;
-	transition: all 0.3s ease-out;
+    z-index: 1001;
+    position: fixed;
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease-out;
 }
 
 .none-content {
-	background-color: transparent;
-	width: 100%;
-	height: 100vh;
-	position: absolute;
-	top: 0;
-	left: 0;
+    background-color: transparent;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .add-teacher .add-form {
-	background-color: var(--white-color);
-	width: 27%;
-	height: 100vh;
-	position: absolute;
-	right: 0px;
-	animation: formOpen 0.3s ease-in-out forwards;
-	box-sizing: border-box;
-	overflow-y: auto;
-	scrollbar-width: none;
+    background-color: var(--white-color);
+    width: 27%;
+    height: 100vh;
+    position: absolute;
+    right: 0px;
+    animation: formOpen 0.3s ease-in-out forwards;
+    box-sizing: border-box;
+    overflow-y: auto;
+    scrollbar-width: none;
 }
 
 .add-header {
-	justify-content: space-between;
-	padding: 20px;
+    justify-content: space-between;
+    padding: 20px;
 }
 
 .add-header h2 {
-	font-size: 24px;
-	font-weight: 600;
-	font-family: Poppins;
-	color: var(--primary-color);
+    font-size: 24px;
+    font-weight: 600;
+    font-family: Poppins;
+    color: var(--primary-color);
 }
 
 .close-icon {
-	font-size: 30px;
-	color: var(--primary-color);
-	cursor: pointer;
+    font-size: 30px;
+    color: var(--primary-color);
+    cursor: pointer;
 }
 
 .add-form hr {
-	width: 100%;
+    width: 100%;
 }
 
 form {
-	display: flex;
-	flex-direction: column;
-	gap: 20px;
-	padding: 30px;
-	transition: all 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+    transition: all 0.3s ease-out;
 }
 
 @keyframes formOpen {
-	from {
-		transform: translateX(100%);
-	}
-	to {
-		transform: translateX(0);
-	}
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
 }
 
 form .input {
-	/* display: block; */
-	width: 90%;
-	height: 40px;
-	outline: none;
-	border: 1px solid var(--grey-color);
-	padding: 3px 15px;
+    /* display: block; */
+    width: 90%;
+    height: 40px;
+    outline: none;
+    border: 1px solid var(--grey-color);
+    padding: 3px 15px;
 }
 
 form label {
-	font-size: 14px;
-	font-weight: 300;
-	font-family: Poppins;
+    font-size: 14px;
+    font-weight: 300;
+    font-family: Poppins;
 }
 
 .inp {
-	display: flex;
-	flex-direction: column;
-	gap: 7px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
 }
 
 .jeans {
-	display: flex;
-	align-items: center;
-	gap: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .jeans-inp {
-	height: 50px;
-	width: 50px;
-	background-color: var(--primary-color);
-	border-radius: 50%;
-	font-size: 32px;
+    height: 50px;
+    width: 50px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    font-size: 32px;
 }
 
 .foto {
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
+
 
 /* .file-inp {
 	display: none;
 } */
+
 
 /* .foto-label {
 		display: inline-block;
@@ -283,95 +287,97 @@ form label {
 		transition: 0.2s;
 	} */
 
+
 /* .foto-label:hover {
 	background: #4338ca;
 } */
 
 form button {
-	padding: 10px 20px;
-	border: none;
-	background-color: var(--primary-color);
-	border-radius: 14px;
-	color: var(--white-color);
-	font-size: 16px;
-	cursor: pointer;
+    padding: 10px 20px;
+    border: none;
+    background-color: var(--primary-color);
+    border-radius: 14px;
+    color: var(--white-color);
+    font-size: 16px;
+    cursor: pointer;
 }
 
 form button:hover {
-	background-color: #3e5a8f;
-	transition: all 0.4s ease-in-out;
+    background-color: #3e5a8f;
+    transition: all 0.4s ease-in-out;
 }
 
 .phone-modal {
-	width: 100vw;
-	height: 100vh;
-	position: fixed;
-	backdrop-filter: blur(5px);
-	background-color: rgba(0, 0, 0, 0.5);
-	top: 0;
-	left: 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .phone-modal a {
-	padding: 40px 20px;
-	background-color: var(--white-color);
-	width: 100%;
-	border-radius: 14px;
-	text-decoration: none;
-	z-index: 1500;
-	font-size: 24px;
-	font-family: Regular;
-	color: var(--primary-color);
+    padding: 40px 20px;
+    background-color: var(--white-color);
+    width: 100%;
+    border-radius: 14px;
+    text-decoration: none;
+    z-index: 1500;
+    font-size: 24px;
+    font-family: Regular;
+    color: var(--primary-color);
 }
 
 .phone-content {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .editTeacher {
-	position: absolute;
-	background-color: var(--white-color);
-	padding: 10px;
-	width: 180px;
-	/* top: 40px; */
-	/* top: -80px; */
-	left: 20px;
-	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
-	z-index: 2000;
-	border-bottom-right-radius: 14px;
-	border-top-left-radius: 14px;
-	border-top-right-radius: 14px;
-	display: flex;
-	flex-direction: column;
+    position: absolute;
+    background-color: var(--white-color);
+    padding: 10px;
+    width: 180px;
+    /* top: 40px; */
+    /* top: -80px; */
+    left: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    border-bottom-right-radius: 14px;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+    display: flex;
+    flex-direction: column;
 }
 
 .editTeacher h2 {
-	font-size: 18px;
-	font-family: Poppins;
-	color: var(--primary-color);
-	cursor: pointer;
-	font-weight: 500;
-	/* padding-left: 30%; */
-	padding: 10px 20%;
-	border-radius: 7px;
-	transition: all 0.3s ease-in-out;
-	text-align: left;
-	/* width: 100%; */
+    font-size: 18px;
+    font-family: Poppins;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-weight: 500;
+    /* padding-left: 30%; */
+    padding: 10px 20%;
+    border-radius: 7px;
+    transition: all 0.3s ease-in-out;
+    text-align: left;
+    /* width: 100%; */
 }
 
 .editTeacher a {
-	text-align: left;
-	padding: 0;
+    text-align: left;
+    padding: 0;
 }
 
 .editTeacher a h2 {
-	text-align: left;
+    text-align: left;
 }
+
 
 /* .editTeacher h2:nth-child(1) {
 	width: 60%;
@@ -379,9 +385,9 @@ form button:hover {
 } */
 
 .editTeacher h2:nth-child(2) {
-	color: rgb(10, 202, 10);
+    color: rgb(10, 202, 10);
 }
 
 .editTeacher h2:nth-child(3) {
-	color: red;
+    color: red;
 }
