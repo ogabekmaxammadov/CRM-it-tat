@@ -1,0 +1,181 @@
+.edit-section {
+	padding-top: 100px;
+}
+
+.teacher-inform {
+	width: 350px;
+	border: 1px solid rgb(214, 204, 204);
+	padding: 15px;
+	border-radius: 6px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.teacher-info {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.teacher-info img {
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.teacher-info h2 {
+	font-size: 16px;
+	font-weight: 400;
+	font-family: Poppins;
+}
+
+.edit {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	position: relative;
+}
+
+.edit h2 {
+	font-size: 14px;
+	color: grey;
+}
+
+.note {
+	position: absolute;
+	left: 50px;
+	background-color: #fff;
+	padding: 10px;
+	top: -3px;
+	border: 1px solid rgb(223, 215, 215);
+	/* transition: all 0.2s ease-in-out; */
+	border-radius: 7px;
+	z-index: 100;
+}
+
+.note::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: -7px;
+	transform: translateY(-50%) rotate(45deg);
+	width: 10px;
+	height: 10px;
+	z-index: 0;
+	background-color: #fff;
+	border-bottom: 1px solid rgb(223, 215, 215);
+	border-left: 1px solid rgb(223, 215, 215);
+}
+
+.edit-item {
+	position: absolute;
+	left: 50px;
+	background-color: #fff;
+	padding: 10px;
+	top: 50px;
+	border: 1px solid rgb(223, 215, 215);
+	/* transition: all 0.2s ease-in-out; */
+	border-radius: 7px;
+	z-index: 100;
+}
+
+.edit-item::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: -7px;
+	transform: translateY(-50%) rotate(45deg);
+	width: 10px;
+	height: 10px;
+	z-index: 0;
+	background-color: #fff;
+	border-bottom: 1px solid rgb(223, 215, 215);
+	border-left: 1px solid rgb(223, 215, 215);
+}
+
+.note,
+.edit-item {
+	opacity: 0;
+	transform: translateY(-10px);
+	transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.note.show,
+.edit-item.show {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.edit-icon:nth-child(1) {
+	font-size: 18px;
+	color: rgb(7, 219, 7);
+	cursor: pointer;
+	border-radius: 50%;
+	border: 1px solid rgb(7, 219, 7);
+	width: 40px;
+	width: 40px;
+	padding: 10px 0;
+}
+.edit-icon:nth-child(1):hover {
+	background-color: rgb(7, 219, 7);
+	color: white;
+	transition: all 0.3s ease-in-out;
+}
+
+.edit-icon:nth-child(2) {
+	font-size: 18px;
+	color: rgb(0, 110, 255);
+	cursor: pointer;
+	border-radius: 50%;
+	border: 1px solid rgb(0, 110, 255);
+	width: 40px;
+	padding: 10px 0;
+}
+
+.edit-icon:nth-child(2):hover {
+	background-color: rgb(0, 110, 255);
+	color: white;
+	transition: all 0.3s ease-in-out;
+}
+
+.teacher-data {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.data {
+	gap: 10px;
+}
+
+.data p {
+	font-size: 16px;
+	color: rgb(30, 44, 233);
+}
+
+.grey {
+	color: grey;
+	font-size: 14px;
+	font-weight: 400;
+}
+
+.data1 {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.data1 h3 {
+	font-size: 16px;
+	font-weight: 400;
+	color: var(--primary-color);
+	border: 1px solid var(--primary-color);
+	padding: 5px 10px;
+	border-radius: 50px;
+	cursor: pointer;
+	width: 70px;
+	text-align: center;
+}

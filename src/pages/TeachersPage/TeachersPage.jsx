@@ -97,7 +97,7 @@ const TeachersPage = ({ collapsed, hideModal }) => {
 		})
 	}
 
-	const handleEditSubmit = (e, index) => {
+	const handleEditSubmit = e => {
 		e.preventDefault()
 		closeEditTeacher()
 	}
@@ -141,7 +141,11 @@ const TeachersPage = ({ collapsed, hideModal }) => {
 						ref={el => (cardRefs.current[index] = el)}
 					>
 						<img src={t.img} alt='' />
-						<Link to='/teacher-edit' onClick={e => e.stopPropagation()}>
+						<Link
+							to='/teacher-edit'
+							state={{ teacher: t }}
+							onClick={e => e.stopPropagation()}
+						>
 							<h2>{t.name}</h2>
 						</Link>
 						<h3>{t.subject}</h3>

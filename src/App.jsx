@@ -27,13 +27,13 @@ function App() {
 	const location = useLocation()
 
 	useEffect(() => {
-		const timer = setTimeout(() => setLoading(false), 3000)
+		const timer = setTimeout(() => setLoading(false), 1500)
 		return () => clearTimeout(timer)
 	}, [])
 
 	useEffect(() => {
 		setLoading(true)
-		const timer = setTimeout(() => setLoading(false), 3000)
+		const timer = setTimeout(() => setLoading(false), 1500)
 		return () => clearTimeout(timer)
 	}, [location.pathname])
 
