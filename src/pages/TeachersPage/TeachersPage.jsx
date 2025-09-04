@@ -13,16 +13,25 @@ const TeachersPage = ({ collapsed, hideModal }) => {
 	const [selectedPhone, setSelectedPhone] = useState(null)
 	const [editTeacherIndex, setEditTeacherIndex] = useState(null)
 
-	const [teachers, setTeachers] = useState([
-		{
-			img: 'https://upload.wikimedia.org/wikipedia/commons/8/8b/Valeriy_Konovalyuk_3x4.jpg',
-			name: 'Khalikov Sayyorbek',
-			subject: 'Frontend',
-			phone: '998 99 999 99 99',
-			date: '2021-01-01',
-			jeans: 'Erkak',
-		},
-	])
+	const [teachers, setTeachers] = useState(() => {
+		const savedTeachers = localStorage.getItem('teachers')
+		return savedTeachers
+			? JSON.parse(savedTeachers)
+			: [
+					{
+						img: 'https://upload.wikimedia.org/wikipedia/commons/8/8b/Valeriy_Konovalyuk_3x4.jpg',
+						name: 'Khalikov Sayyorbek',
+						subject: 'Frontend',
+						phone: '998 99 999 99 99',
+						date: '2021-01-01',
+						jeans: 'Erkak',
+					},
+			  ]
+	})
+
+	useEffect(() => {
+		localStorage.setItem('teachers', JSON.stringify(teachers))
+	}, [teachers])
 
 	const [formData, setFormData] = useState({
 		phone: '',
@@ -57,7 +66,7 @@ const TeachersPage = ({ collapsed, hideModal }) => {
 			date: formData.date,
 			jeans: formData.jeans,
 		}
-		setTeachers(prev => [...prev, newTeacher])
+		setTeachers(prev => [newTeacher, ...prev]) // YANGI O'QITUVCHINI BOSHIGA QO'SHISH
 		setShowAddTeacher(false)
 		setFormData({
 			phone: '',

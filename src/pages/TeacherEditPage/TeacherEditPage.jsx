@@ -11,7 +11,7 @@ const TeacherEditPage = ({ collapsed, hideModal }) => {
 	const [teacher, setTeacher] = useState(teacherData)
 	const [showModal, setShowModal] = useState(false)
 
-	const handleChange = (e, index) => {
+	const handleChange = e => {
 		const { name, value, files } = e.target
 		setTeacher(prev => ({
 			...prev,
