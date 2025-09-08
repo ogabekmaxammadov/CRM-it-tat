@@ -1,4 +1,3 @@
-import { Select } from 'antd'
 import { useEffect, useRef, useState } from 'react'
 import { CiEdit } from 'react-icons/ci'
 import { Link } from 'react-router-dom'
@@ -33,15 +32,15 @@ const GroupsPage = ({ collapsed, hideModal }) => {
 
 	const toggleAddTeacher = () => setShowAddTeacher(prev => !prev)
 
-	const handleChange = e => {
-		const { name, value, type, files } = e.target
-		if (type === 'file') {
-			setFormData({ ...formData, foto: URL.createObjectURL(files[0]) })
-			setFileName(files[0] ? files[0].name : 'Hech narsa tanlanmagan')
-		} else {
-			setFormData({ ...formData, [name]: value })
-		}
-	}
+	// const handleChange = e => {
+	// 	const { name, value, type, files } = e.target
+	// 	if (type === 'file') {
+	// 		setFormData({ ...formData, foto: URL.createObjectURL(files[0]) })
+	// 		setFileName(files[0] ? files[0].name : 'Hech narsa tanlanmagan')
+	// 	} else {
+	// 		setFormData({ ...formData, [name]: value })
+	// 	}
+	// }
 
 	const handleEdit = index => {
 		setEditIndex(index)
